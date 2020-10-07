@@ -23,6 +23,7 @@ namespace OS_CP
 
             IApplicationController controller = new ApplicationController(new LightInjectAdapter())
                 .RegisterView<IMainView, MainView>()
+                .RegisterView<IAboutView, AboutView>()
                 .RegisterInstance(new ApplicationContext());
 
             //Starting program
