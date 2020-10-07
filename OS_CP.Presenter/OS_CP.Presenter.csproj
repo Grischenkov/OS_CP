@@ -49,8 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutView\AboutPresenter.cs" />
     <Compile Include="ApplicationController.cs" />
     <Compile Include="BasePresenter.cs" />
+    <Compile Include="AboutView\IAboutView.cs" />
     <Compile Include="ParentInterfaces\IApplicationController.cs" />
     <Compile Include="ParentInterfaces\IContainer.cs" />
     <Compile Include="ParentInterfaces\IPresenter.cs" />
@@ -84,5 +86,6 @@
       <Name>OS_CP.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
