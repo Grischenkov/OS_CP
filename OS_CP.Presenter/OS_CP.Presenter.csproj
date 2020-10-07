@@ -78,6 +78,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OS_CP.Model\OS_CP.Model.csproj">
+      <Project>{cb12c813-3c81-48e9-91a1-92cfdcc363c3}</Project>
+      <Name>OS_CP.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
