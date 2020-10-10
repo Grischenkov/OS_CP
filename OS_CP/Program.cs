@@ -27,7 +27,7 @@ namespace OS_CP
                 .RegisterInstance(new ApplicationContext());
 
             //Starting program
-            controller.Run<MainView>();
+            controller.Run<MainPresenter>();
         }
     }
 }

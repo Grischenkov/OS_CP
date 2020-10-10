@@ -7,12 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OS_CP.Presenter;
 
 namespace OS_CP
 {
-    public partial class Form1 : Form
+    /// <summary>
+    /// Class of program for work with main screen
+    /// </summary>s
+    public partial class MainView : Form, IMainView
     {
-        public Form1()
+        /// <summary>
+        /// Base constructor
+        /// </summary>
+        public MainView()
         {
             InitializeComponent();
         }
