@@ -22,18 +22,18 @@
 mono_crash.*
 
 # Build results
-#[Dd]ebug/
-#[Dd]ebugPublic/
-#[Rr]elease/
-#[Rr]eleases/
-#x64/
-#x86/
-#[Aa][Rr][Mm]/
-#[Aa][Rr][Mm]64/
-#bld/
-#[Bb]in/
-#[Oo]bj/
-#[Ll]og/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -41,11 +41,11 @@ mono_crash.*
 #wwwroot/
 
 # Visual Studio 2017 auto generated files
-#Generated\ Files/
+Generated\ Files/
 
 # MSTest test Results
-#[Tt]est[Rr]esult*/
-#[Bb]uild[Ll]og.*
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
 
 # NUnit
 *.VisualState.xml
