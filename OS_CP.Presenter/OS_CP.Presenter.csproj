@@ -53,6 +53,8 @@
     <Compile Include="ApplicationController.cs" />
     <Compile Include="BasePresenter.cs" />
     <Compile Include="AboutView\IAboutView.cs" />
+    <Compile Include="MainView\MainPresenter.cs" />
+    <Compile Include="MainView\IMainView.cs" />
     <Compile Include="ParentInterfaces\IApplicationController.cs" />
     <Compile Include="ParentInterfaces\IContainer.cs" />
     <Compile Include="ParentInterfaces\IPresenter.cs" />
