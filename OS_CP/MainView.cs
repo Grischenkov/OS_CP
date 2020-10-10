@@ -10,9 +10,15 @@ using System.Windows.Forms;
 
 namespace OS_CP
 {
-    public partial class Form1 : Form
+    /// <summary>
+    /// Class of program for work with main screen
+    /// </summary>s
+    public partial class MainView : Form
     {
-        public Form1()
+        /// <summary>
+        /// Base constructor
+        /// </summary>
+        public MainView()
         {
             InitializeComponent();
         }
