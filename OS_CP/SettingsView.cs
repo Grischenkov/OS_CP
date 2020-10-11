@@ -7,10 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OS_CP.Presenter;
 
 namespace OS_CP
 {
-    public partial class SettingsView : Form
+    /// <summary>
+    /// Class of program for work with settings screen
+    /// </summary>
+    public partial class SettingsView : Form, ISettingsView
     {
         public SettingsView()
         {
