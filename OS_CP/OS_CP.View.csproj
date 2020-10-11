@@ -57,7 +57,11 @@
       <DependentUpon>AboutView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
+    <Compile Include="HelpView.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpView.Designer.cs">
+      <DependentUpon>HelpView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -74,7 +78,10 @@
     <EmbeddedResource Include="Views\AboutView.resx">
       <DependentUpon>AboutView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainView.resx">
+    <EmbeddedResource Include="HelpView.resx">
+      <DependentUpon>HelpView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

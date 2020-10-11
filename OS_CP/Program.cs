@@ -25,6 +25,7 @@ namespace OS_CP
                 .RegisterView<IMainView, MainView>()
                 .RegisterView<IAboutView, AboutView>()
                 .RegisterView<ISettingsView, SettingsView>()
+                .RegisterView<IHelpView, HelpView>()
                 .RegisterInstance(new ApplicationContext());
 
             //Starting program
