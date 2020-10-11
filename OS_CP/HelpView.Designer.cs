@@ -1,5 +1,8 @@
 ﻿namespace OS_CP
 {
+    /// <summary>
+    /// Class of program for work with help screen
+    /// </summary>
     partial class HelpView
     {
         /// <summary>
