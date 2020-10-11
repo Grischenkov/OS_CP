@@ -31,7 +31,7 @@
         /// </summary>
         private void Calculate()
         {
-            View.FuncName = GetFunction();
+            View.FunctionName = GetFunction();
             View.DrawChart();
         }
 
