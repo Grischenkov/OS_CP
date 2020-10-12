@@ -14,9 +14,11 @@
         /// <param name="view"> View </param>
         public MainPresenter(IApplicationController controller, IMainView view) : base(controller, view)
         {
+            //Model initializing
             _function = new Function();
 
-            View.Calculate += () => Calculate();
+            //Event subscription
+            View.Calculate += Calculate;
             View.Open += Open;
             View.Save += Save;
             View.Export += Export;
@@ -31,8 +33,9 @@
         /// </summary>
         private void Calculate()
         {
-            View.FunctionName = GetFunction();
-            View.DrawChart();
+            _function.ValueTable = View.ValueTable;
+            View.FunctionName = _function.Name;
+            View.DrawChart(_function.ValueTable);
         }
 
         /// <summary>
@@ -40,7 +43,7 @@
         /// </summary>
         private void Open()
         {
-            Controller.Run<OpenPresenter>();
+            View.DrawTable(OpenFile());
         }
 
         /// <summary>
@@ -56,7 +59,7 @@
         /// </summary>
         private void Export()
         {
-            Controller.Run<ExportPresenter>();
+            ExportData();
         }
 
         /// <summary>
