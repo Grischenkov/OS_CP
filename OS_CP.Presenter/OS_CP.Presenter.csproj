@@ -55,6 +55,7 @@
     <Compile Include="AboutView\IAboutView.cs" />
     <Compile Include="HelpView\HelpPresenter.cs" />
     <Compile Include="HelpView\IHelpView.cs" />
+    <Compile Include="MainView\FileFunctions.cs" />
     <Compile Include="MainView\MainPresenter.cs" />
     <Compile Include="MainView\IMainView.cs" />
     <Compile Include="ParentInterfaces\IApplicationController.cs" />

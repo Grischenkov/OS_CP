@@ -3,7 +3,7 @@
     /// <summary>
     /// Specific presenter interface for Main view
     /// </summary>
-    public sealed class MainPresenter : BasePresenter<IMainView>
+    public sealed partial class MainPresenter : BasePresenter<IMainView>
     {
         private Function _function; //Object of class Function for work with model
 
@@ -35,7 +35,7 @@
         {
             _function.ValueTable = View.ValueTable;
             View.FunctionName = _function.Name;
-            View.DrawChart(_function.ValueTable);
+            View.DrawChart(Interpolate(_function.ValueTable));
         }
 
         /// <summary>
