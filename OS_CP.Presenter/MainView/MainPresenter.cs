@@ -3,7 +3,7 @@
     /// <summary>
     /// Specific presenter interface for Main view
     /// </summary>
-    public sealed class MainPresenter : BasePresenter<IMainView>
+    public sealed partial class MainPresenter : BasePresenter<IMainView>
     {
         private Function _function; //Object of class Function for work with model
 
@@ -14,9 +14,11 @@
         /// <param name="view"> View </param>
         public MainPresenter(IApplicationController controller, IMainView view) : base(controller, view)
         {
+            //Model initializing
             _function = new Function();
 
-            View.Calculate += () => Calculate();
+            //Event subscription
+            View.Calculate += Calculate;
             View.Open += Open;
             View.Save += Save;
             View.Export += Export;
@@ -31,8 +33,9 @@
         /// </summary>
         private void Calculate()
         {
-            View.FuncName = GetFunction();
-            View.DrawChart();
+            _function.ValueTable = View.ValueTable;
+            View.FunctionName = _function.Name;
+            View.DrawChart(Interpolate(_function.ValueTable));
         }
 
         /// <summary>
@@ -40,7 +43,7 @@
         /// </summary>
         private void Open()
         {
-            Controller.Run<OpenPresenter>();
+            View.DrawTable(OpenFile());
         }
 
         /// <summary>
@@ -56,7 +59,7 @@
         /// </summary>
         private void Export()
         {
-            Controller.Run<ExportPresenter>();
+            ExportData();
         }
 
         /// <summary>
