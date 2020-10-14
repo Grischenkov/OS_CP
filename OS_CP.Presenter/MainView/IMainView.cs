@@ -10,7 +10,12 @@ namespace OS_CP.Presenter
         /// <summary>
         /// Setting function name
         /// </summary>
-        string FuncName { set; }
+        string FunctionName { set; }
+
+        /// <summary>
+        /// Get value table
+        /// </summary>
+        double[][] ValueTable { get; }
 
         /// <summary>
         /// Calculating function value table, drawing chart
