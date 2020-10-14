@@ -64,7 +64,6 @@
     <Compile Include="Views\ParentInterfaces\IPresenter.cs" />
     <Compile Include="Views\ParentInterfaces\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\SettingsView\FileFunctions.cs" />
     <Compile Include="Views\SettingsView\ISettingsView.cs" />
     <Compile Include="Views\SettingsView\SettingsPresenter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
