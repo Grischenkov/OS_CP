@@ -3,8 +3,12 @@
     /// <summary>
     /// Specific presenter interface for Settings view
     /// </summary>
-    public sealed class SettingsPresenter : BasePresenter<ISettingsView>
+    public sealed partial class SettingsPresenter : BasePresenter<ISettingsView>
     {
+        const string path = @"Software\Grshchnkv\OS_CP";
+        
+        Microsoft.Win32.RegistryKey RegistryKey;
+
         /// <summary>
         /// Constructor of SettingsPresenter class
         /// </summary>
@@ -12,6 +16,9 @@
         /// <param name="view"> View </param>
         public SettingsPresenter(IApplicationController controller, ISettingsView view) : base(controller, view)
         {
+            CheckRegistry();
+            LoadValues();
+
             View.LoadShowing += LoadShowing;
             View.VideoShowing += VideoShowing;
             View.SelectExport += SelectExport;
@@ -19,11 +26,63 @@
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        private void CheckRegistry()
+        {
+            RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(path, true) ??
+                            Microsoft.Win32.Registry.CurrentUser.CreateSubKey(path, true);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LoadValues()
+        {
+            if (RegistryKey == null) return;
+
+            string[] keyNames = RegistryKey.GetValueNames();
+            if (keyNames.Length != 0)
+            {
+                foreach (string keyName in keyNames)
+                {
+                    switch (keyName)
+                    {
+                        case "ShowLoad":
+                            View.ShowLoad = (bool)RegistryKey.GetValue("ShowLoad");
+                            break;
+                        case "ShowVideo":
+                            View.ShowVideo = (bool)RegistryKey.GetValue("ShowVideo");
+                            break;
+                        case "ExportDLLPath":
+                            View.ExportDLLPath = (string)RegistryKey.GetValue("ExportDLLPath");
+                            break;
+                        case "InterpolationDLLPath":
+                            View.InterpolationDLLPath = (string)RegistryKey.GetValue("InterpolationDLLPath");
+                            break;
+                    }
+                }
+                RegistryKey.Close();
+            }
+            else
+            {
+                RegistryKey.SetValue("ShowLoad", true);
+                RegistryKey.SetValue("ShowVideo", true);
+                RegistryKey.SetValue("ExportDLLPath", null);
+                RegistryKey.SetValue("InterpolationDLLPath", null);
+                RegistryKey.Close();
+            }
+        }
+
+        /// <summary>
         /// Change load settings
         /// </summary>
         private void LoadShowing()
         {
-            //TODO
+            if (RegistryKey == null) return;
+
+            RegistryKey.SetValue("ShowLoad", View.ShowLoad);
+            RegistryKey.Close();
         }
 
         /// <summary>
@@ -31,7 +90,10 @@
         /// </summary>
         private void VideoShowing()
         {
-            //TODO
+            if (RegistryKey == null) return;
+
+            RegistryKey.SetValue("ShowLoad", View.ShowVideo);
+            RegistryKey.Close();
         }
 
         /// <summary>
@@ -39,7 +101,10 @@
         /// </summary>
         private void SelectExport()
         {
-            //TODO
+            if (RegistryKey == null) return;
+
+            RegistryKey.SetValue("ExportDLLPath", OpenDLL("dll"));
+            RegistryKey.Close();
         }
 
         /// <summary>
@@ -47,7 +112,10 @@
         /// </summary>
         private void SelectInterpolation()
         {
-            //TODO
+            if (RegistryKey == null) return;
+
+            RegistryKey.SetValue("InterpolationDLLPath", OpenDLL("dll"));
+            RegistryKey.Close();
         }
     }
 }

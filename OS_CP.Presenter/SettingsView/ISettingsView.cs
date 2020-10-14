@@ -10,12 +10,12 @@ namespace OS_CP.Presenter
         /// <summary>
         /// 
         /// </summary>
-        bool ShowVideo { get; }
+        bool ShowVideo { get; set;  }
 
         /// <summary>
         /// 
         /// </summary>
-        bool ShowLoad { get; }
+        bool ShowLoad { get; set; }
 
         /// <summary>
         /// Getting/Setting Export type DLL path
