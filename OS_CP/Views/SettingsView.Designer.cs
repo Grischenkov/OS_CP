@@ -34,8 +34,8 @@
             this.ShowProcessVideo_checkBox = new System.Windows.Forms.CheckBox();
             this.ShowLoadScreen_checkBox = new System.Windows.Forms.CheckBox();
             this.SelectExport_button = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ExportDLL_textBox = new System.Windows.Forms.TextBox();
+            this.InterpolationDLL_textBox = new System.Windows.Forms.TextBox();
             this.SelectInterpolation_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,21 +70,21 @@
             this.SelectExport_button.Text = "Select";
             this.SelectExport_button.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // ExportDLL_textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(271, 20);
-            this.textBox1.TabIndex = 3;
+            this.ExportDLL_textBox.Location = new System.Drawing.Point(12, 112);
+            this.ExportDLL_textBox.Name = "ExportDLL_textBox";
+            this.ExportDLL_textBox.ReadOnly = true;
+            this.ExportDLL_textBox.Size = new System.Drawing.Size(271, 20);
+            this.ExportDLL_textBox.TabIndex = 3;
             // 
-            // textBox2
+            // InterpolationDLL_textBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 172);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(271, 20);
-            this.textBox2.TabIndex = 4;
+            this.InterpolationDLL_textBox.Location = new System.Drawing.Point(12, 172);
+            this.InterpolationDLL_textBox.Name = "InterpolationDLL_textBox";
+            this.InterpolationDLL_textBox.ReadOnly = true;
+            this.InterpolationDLL_textBox.Size = new System.Drawing.Size(271, 20);
+            this.InterpolationDLL_textBox.TabIndex = 4;
             // 
             // SelectInterpolation_button
             // 
@@ -121,8 +121,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SelectInterpolation_button);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.InterpolationDLL_textBox);
+            this.Controls.Add(this.ExportDLL_textBox);
             this.Controls.Add(this.SelectExport_button);
             this.Controls.Add(this.ShowLoadScreen_checkBox);
             this.Controls.Add(this.ShowProcessVideo_checkBox);
@@ -142,8 +142,8 @@
         private System.Windows.Forms.CheckBox ShowProcessVideo_checkBox;
         private System.Windows.Forms.CheckBox ShowLoadScreen_checkBox;
         private System.Windows.Forms.Button SelectExport_button;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ExportDLL_textBox;
+        private System.Windows.Forms.TextBox InterpolationDLL_textBox;
         private System.Windows.Forms.Button SelectInterpolation_button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
