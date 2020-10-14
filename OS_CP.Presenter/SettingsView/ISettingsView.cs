@@ -8,6 +8,16 @@ namespace OS_CP.Presenter
     public interface ISettingsView : IView
     {
         /// <summary>
+        /// 
+        /// </summary>
+        bool ShowVideo { get; set;  }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        bool ShowLoad { get; set; }
+
+        /// <summary>
         /// Getting/Setting Export type DLL path
         /// </summary>
         string ExportDLLPath { get; set; }
