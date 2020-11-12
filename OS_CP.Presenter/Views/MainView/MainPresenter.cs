@@ -38,7 +38,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Calculate()
         {
-            _function.FillTable(View.ValueTable);
+            _function.FillTable(CheckValues(View.ValueTable));
             View.DrawChart(/*ProcessData(*/_function.Table/*)*/);
         }
 
@@ -47,7 +47,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Open()
         {
-            View.DrawTable(ReadTable());
+           //View.ValueTable = ReadTable();
         }
 
         /// <summary>
@@ -134,6 +134,32 @@ namespace OS_CP.Presenter
                         throw new Exception("Error opening file!");
                     }
                 } while (!sr.EndOfStream);
+            }
+
+            return table;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="srcTable"></param>
+        /// <returns></returns>
+        private double[][] CheckValues (string[][] srcTable)
+        {
+            double[][] table = new double[srcTable.Length][];
+
+            for (int i = 0; i < table.Length; i++)
+            {
+                table[i] = new double[3];
+                for (int j = 0; j < 3; j++)
+                {
+                    if (String.IsNullOrEmpty(srcTable[i][j]))
+                    {
+                        throw new Exception($"Заполните {j+1}-й элемент {i+1}-й строки таблицы!");
+                    }
+
+                    table[i][j] = Double.Parse(srcTable[i][j]);
+                }
             }
 
             return table;
