@@ -1,4 +1,8 @@
-﻿namespace OS_CP.Presenter
+﻿using System;
+using System.IO;
+using System.Linq;
+
+namespace OS_CP.Presenter
 {
     /// <summary>
     /// Specific presenter interface for Main view
@@ -43,7 +47,7 @@
         /// </summary>
         private void Open()
         {
-            View.DrawTable(OpenFile());
+            View.DrawTable(ReadTable());
         }
 
         /// <summary>
@@ -84,6 +88,55 @@
         private void Settings()
         {
             Controller.Run<SettingsPresenter>();
+        }
+
+        /// <summary>
+        /// Reading value table from file
+        /// </summary>
+        /// <returns></returns>
+        private double[][] ReadTable()
+        {
+            double[][] table = null;
+
+            using (StreamReader sr = new StreamReader(FileFunctions.Open("txt")))
+            {
+                int i = 0;
+                do
+                {
+                    string str = sr.ReadLine();
+                    i++;
+                } while (!sr.EndOfStream);
+
+                table = new double[i][];
+                i = 0;
+
+                do
+                {
+                    string str = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(str))
+                    {
+                        double[] arr = str.Split(' ').Select(double.Parse).ToArray();
+                        if (arr.Length != 3)
+                        {
+                            throw new ArgumentException("Incorrect data in file!");
+                        }
+                        else
+                        {
+                            table[i] = new double[3];
+                            table[i][0] = arr[0];
+                            table[i][1] = arr[1];
+                            table[i][2] = arr[2];
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Error opening file!");
+                    }
+                } while (!sr.EndOfStream);
+            }
+
+            return table;
         }
     }
 }
