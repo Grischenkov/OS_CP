@@ -3,20 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OS_CP.Presenter;
 
 namespace OS_CP
 {
+    /// <summary>
+    /// The main class of program
+    /// </summary>
     static class Program
     {
         /// <summary>
-        /// Главная точка входа для приложения.
+        /// The main entry point for the application
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            IApplicationController controller = new ApplicationController(new LightInjectAdapter())
+                .RegisterView<IMainView, MainView>()
+                .RegisterView<IAboutView, AboutView>()
+                .RegisterView<ISettingsView, SettingsView>()
+                .RegisterView<IHelpView, HelpView>()
+                .RegisterInstance(new ApplicationContext());
+
+            //Starting program
+            controller.Run<MainPresenter>();
         }
     }
 }
