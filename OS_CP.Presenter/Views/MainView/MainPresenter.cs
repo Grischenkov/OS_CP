@@ -150,9 +150,9 @@ namespace OS_CP.Presenter
 
             for (int i = 0; i < table.Length; i++)
             {
+                table[i] = new double[3];
                 for (int j = 0; j < 3; j++)
                 {
-                    table[i] = new double[3];
                     if (String.IsNullOrEmpty(srcTable[i][j]))
                     {
                         throw new Exception($"Заполните {j+1}-й элемент {i+1}-й строки таблицы!");

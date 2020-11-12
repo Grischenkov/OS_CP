@@ -32,10 +32,9 @@ namespace OS_CP
             get
             {
                 string[][] table = new string[Table.RowCount - 1][];
-                for (int i = 0; i < Table.RowCount - 1; i++) 
+                for (int i = 0; i < Table.RowCount - 1; i++)
                 {
                     table[i] = new string[3];
-
                     table[i][0] = Table.Rows[i].Cells[0].Value != null ? Table.Rows[i].Cells[0].Value.ToString() : null;
                     table[i][1] = Table.Rows[i].Cells[1].Value != null ? Table.Rows[i].Cells[1].Value.ToString() : null;
                     table[i][2] = Table.Rows[i].Cells[2].Value != null ? Table.Rows[i].Cells[2].Value.ToString() : null;
