@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using OS_CP.Model;
 
 namespace OS_CP.Presenter
 {
     /// <summary>
     /// Specific presenter interface for Main view
     /// </summary>
-    public sealed partial class MainPresenter : BasePresenter<IMainView>
+    public sealed class MainPresenter : BasePresenter<IMainView>
     {
         private Function _function; //Object of class Function for work with model
 
@@ -37,9 +38,8 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Calculate()
         {
-            _function.ValueTable = View.ValueTable;
-            View.FunctionName = _function.Name;
-            View.DrawChart(Interpolate(_function.ValueTable));
+            _function.FillTable(View.ValueTable);
+            View.DrawChart(/*ProcessData(*/_function.Table/*)*/);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Save()
         {
-            Controller.Run<SavePresenter>();
+            //Controller.Run<SavePresenter>();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Export()
         {
-            ExportData();
+            //ExportData();
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void About()
         {
-            Controller.Run<AboutPresenter>();
+            //Controller.Run<AboutPresenter>();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Help()
         {
-            Controller.Run<HelpPresenter>();
+            //Controller.Run<HelpPresenter>();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Settings()
         {
-            Controller.Run<SettingsPresenter>();
+            //Controller.Run<SettingsPresenter>();
         }
 
         /// <summary>
