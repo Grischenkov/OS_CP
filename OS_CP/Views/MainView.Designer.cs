@@ -36,8 +36,10 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Table = new System.Windows.Forms.DataGridView();
+            this.Expense = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deviation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Сoncentration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Calculate_button = new System.Windows.Forms.Button();
-            this.Function_name = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.File_toolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.Open_button = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,9 +52,6 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.Help_button = new System.Windows.Forms.ToolStripMenuItem();
             this.About_button = new System.Windows.Forms.ToolStripMenuItem();
-            this.Expense = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Deviation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Сoncentration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -64,13 +63,13 @@
             this.Chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.Chart.Legends.Add(legend1);
-            this.Chart.Location = new System.Drawing.Point(789, 126);
+            this.Chart.Location = new System.Drawing.Point(789, 30);
             this.Chart.Name = "Chart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.Chart.Series.Add(series1);
-            this.Chart.Size = new System.Drawing.Size(1103, 906);
+            this.Chart.Size = new System.Drawing.Size(1103, 999);
             this.Chart.TabIndex = 0;
             this.Chart.Text = "Chart";
             // 
@@ -81,31 +80,38 @@
             this.Expense,
             this.Deviation,
             this.Сoncentration});
-            this.Table.Location = new System.Drawing.Point(12, 126);
+            this.Table.Location = new System.Drawing.Point(12, 30);
             this.Table.Name = "Table";
             this.Table.Size = new System.Drawing.Size(771, 906);
             this.Table.TabIndex = 1;
             // 
+            // Expense
+            // 
+            this.Expense.HeaderText = "Expense";
+            this.Expense.Name = "Expense";
+            this.Expense.Width = 230;
+            // 
+            // Deviation
+            // 
+            this.Deviation.HeaderText = "Deviation";
+            this.Deviation.Name = "Deviation";
+            this.Deviation.Width = 230;
+            // 
+            // Сoncentration
+            // 
+            this.Сoncentration.HeaderText = "Сoncentration";
+            this.Сoncentration.Name = "Сoncentration";
+            this.Сoncentration.Width = 230;
+            // 
             // Calculate_button
             // 
             this.Calculate_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Calculate_button.Location = new System.Drawing.Point(646, 80);
+            this.Calculate_button.Location = new System.Drawing.Point(12, 942);
             this.Calculate_button.Name = "Calculate_button";
-            this.Calculate_button.Size = new System.Drawing.Size(137, 23);
+            this.Calculate_button.Size = new System.Drawing.Size(771, 87);
             this.Calculate_button.TabIndex = 2;
             this.Calculate_button.Text = "Calculate";
             this.Calculate_button.UseVisualStyleBackColor = true;
-            // 
-            // Function_name
-            // 
-            this.Function_name.AutoSize = true;
-            this.Function_name.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Function_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Function_name.Location = new System.Drawing.Point(12, 55);
-            this.Function_name.Name = "Function_name";
-            this.Function_name.Size = new System.Drawing.Size(344, 51);
-            this.Function_name.TabIndex = 4;
-            this.Function_name.Text = "Current function";
             // 
             // menuStrip
             // 
@@ -135,33 +141,33 @@
             // 
             this.Open_button.Name = "Open_button";
             this.Open_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Open_button.Size = new System.Drawing.Size(180, 22);
+            this.Open_button.Size = new System.Drawing.Size(148, 22);
             this.Open_button.Text = "Open";
             // 
             // Save_button
             // 
             this.Save_button.Name = "Save_button";
             this.Save_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Save_button.Size = new System.Drawing.Size(180, 22);
+            this.Save_button.Size = new System.Drawing.Size(148, 22);
             this.Save_button.Text = "Save";
             // 
             // Export_button
             // 
             this.Export_button.Name = "Export_button";
             this.Export_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.Export_button.Size = new System.Drawing.Size(180, 22);
+            this.Export_button.Size = new System.Drawing.Size(148, 22);
             this.Export_button.Text = "Export";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
             // 
             // Exit_button
             // 
             this.Exit_button.Name = "Exit_button";
             this.Exit_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.Exit_button.Size = new System.Drawing.Size(180, 22);
+            this.Exit_button.Size = new System.Drawing.Size(148, 22);
             this.Exit_button.Text = "Exit";
             // 
             // Help_toolStrip
@@ -198,30 +204,11 @@
             this.About_button.Size = new System.Drawing.Size(116, 22);
             this.About_button.Text = "About";
             // 
-            // Expense
-            // 
-            this.Expense.HeaderText = "Expense";
-            this.Expense.Name = "Expense";
-            this.Expense.Width = 230;
-            // 
-            // Deviation
-            // 
-            this.Deviation.HeaderText = "Deviation";
-            this.Deviation.Name = "Deviation";
-            this.Deviation.Width = 230;
-            // 
-            // Сoncentration
-            // 
-            this.Сoncentration.HeaderText = "Сoncentration";
-            this.Сoncentration.Name = "Сoncentration";
-            this.Сoncentration.Width = 230;
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.Function_name);
             this.Controls.Add(this.Calculate_button);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.Chart);
@@ -246,7 +233,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart;
         private System.Windows.Forms.DataGridView Table;
         private System.Windows.Forms.Button Calculate_button;
-        private System.Windows.Forms.Label Function_name;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem File_toolStrip;
         private System.Windows.Forms.ToolStripMenuItem Open_button;
