@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using OS_CP.Presenter;
 
 namespace OS_CP
@@ -16,6 +17,9 @@ namespace OS_CP
     /// </summary>s
     public partial class MainView : Form, IMainView
     {
+        private Series _deviation = new Series("Deviation"); //Series of chart with deviation values
+        private Series _concentration = new Series("Concentration"); //Series of chart with concentration values
+
         /// <summary>
         /// Get value table
         /// </summary>
@@ -28,7 +32,7 @@ namespace OS_CP
                     table[i] = new double[3];
                     for (int j = 0; j < 3; j++)
                     {
-                        table[i][j] =  Double.Parse(Table.Rows[i].Cells[j].Value.ToString());
+                        table[i][j] =  Double.Parse((Table.Rows[i].Cells[j].Value.ToString()));
                     }
                 }
                 return table;
@@ -51,6 +55,25 @@ namespace OS_CP
             Open_button.Click += (sender, args) => Action(Open);
             Help_button.Click += (sender, args) => Action(Help);
             Exit_button.Click += (sender, args) => Action(Exit);
+
+            //Settings chart lines colour
+            _deviation.Color = Color.MediumBlue;
+            _concentration.Color = Color.DarkOrange;
+
+            //Settings chart lines type
+            _deviation.ChartType = SeriesChartType.Line;
+            _concentration.ChartType = SeriesChartType.Line;
+
+            //Cleaning  and adding chart series
+            Chart.Series.Clear();
+            Chart.Series.Add(_deviation);
+            Chart.Series.Add(_concentration);
+
+            //Setting chart
+            Chart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            Chart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            Chart.ChartAreas[0].AxisX.Crossing = 0;
+            Chart.ChartAreas[0].AxisY.Crossing = 0;
         }
 
         /// <summary>
