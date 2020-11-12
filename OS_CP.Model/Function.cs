@@ -8,11 +8,6 @@
         private int _size; //Size of function value 
 
         /// <summary>
-        /// Getting function name 
-        /// </summary>
-        public string Name { get; } = "";
-
-        /// <summary>
         /// Getting and setting function value table size 
         /// </summary>
         public int Size

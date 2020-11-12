@@ -8,11 +8,6 @@ namespace OS_CP.Presenter
     public interface IMainView : IView
     {
         /// <summary>
-        /// Setting function name
-        /// </summary>
-        string FunctionName { set; }
-
-        /// <summary>
         /// Get value table
         /// </summary>
         double[][] ValueTable { get; }

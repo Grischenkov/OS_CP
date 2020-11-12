@@ -8,7 +8,7 @@ namespace OS_CP.Presenter
     /// <summary>
     /// Specific presenter interface for Main view
     /// </summary>
-    public sealed partial class MainPresenter : BasePresenter<IMainView>
+    public sealed class MainPresenter : BasePresenter<IMainView>
     {
         private Function _function; //Object of class Function for work with model
 
@@ -39,7 +39,6 @@ namespace OS_CP.Presenter
         private void Calculate()
         {
             _function.FillTable(View.ValueTable);
-            View.FunctionName = _function.Name;
             View.DrawChart(/*ProcessData(*/_function.Table/*)*/);
         }
 
