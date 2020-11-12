@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace OS_CP.Presenter
 {
@@ -8,9 +9,14 @@ namespace OS_CP.Presenter
     public interface IMainView : IView
     {
         /// <summary>
+        /// Reading chart image from form
+        /// </summary>
+        Bitmap ChartImage { get; }
+
+        /// <summary>
         /// Get value table
         /// </summary>
-        double[][] ValueTable { get; }
+        string[][] ValueTable { get; set; }
 
         /// <summary>
         /// Calculating function value table, drawing chart
@@ -75,11 +81,5 @@ namespace OS_CP.Presenter
         /// </summary>
         /// <param name="table"> Function value table </param>
         void DrawChart(double[][] table);
-
-        /// <summary>
-        /// Filling table in main form
-        /// </summary>
-        /// <param name="table"> Function value table </param>
-        void DrawTable(double[][] table);
     }
 }
