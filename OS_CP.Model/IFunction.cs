@@ -23,7 +23,7 @@
         /// <returns></returns>
         double this[int i, int j] { get; set; }
 
-        // <summary>
+        /// <summary>
         /// Fill function value table
         /// </summary>
         /// <param name="table"> value table </param>

@@ -22,8 +22,8 @@ namespace OS_CP
         public double[][] ValueTable {
             get
             {
-                double[][] table = new double[Table.RowCount][];
-                for (int i = 0; i < Table.RowCount; i++) 
+                double[][] table = new double[Table.RowCount - 1][];
+                for (int i = 0; i < Table.RowCount - 1; i++) 
                 {
                     table[i] = new double[3];
                     for (int j = 0; j < 3; j++)
@@ -92,6 +92,15 @@ namespace OS_CP
         /// Exiting program
         /// </summary>
         public event Action Exit;
+
+        /// <summary>
+        /// Showing form 
+        /// </summary>
+        public new void Show()
+        {
+            //Starting application
+            Application.Run(this);
+        }
 
         /// <summary>
         /// Action
