@@ -17,25 +17,34 @@ namespace OS_CP
     /// </summary>s
     public partial class MainView : Form, IMainView
     {
-        private Series _deviation = new Series("Deviation"); //Series of chart with deviation values
-        private Series _concentration = new Series("Concentration"); //Series of chart with concentration values
+        private Series _deviation     = new Series("Deviation");        //Series of chart with deviation values
+        private Series _concentration = new Series("Concentration");    //Series of chart with concentration values
 
         /// <summary>
         /// Get value table
         /// </summary>
-        public double[][] ValueTable {
+        public string[][] ValueTable {
             get
             {
-                double[][] table = new double[Table.RowCount - 1][];
+                string[][] table = new string[Table.RowCount - 1][];
                 for (int i = 0; i < Table.RowCount - 1; i++) 
                 {
-                    table[i] = new double[3];
-                    for (int j = 0; j < 3; j++)
-                    {
-                        table[i][j] =  Double.Parse((Table.Rows[i].Cells[j].Value.ToString()));
-                    }
+                    table[i] = new string[3];
+                    table[i][0] = Table.Rows[i].Cells[0].Value.ToString();
+                    table[i][1] = Table.Rows[i].Cells[1].Value.ToString();
+                    table[i][2] = Table.Rows[i].Cells[2].Value.ToString();
                 }
                 return table;
+            }
+            set
+            {
+                for (int i = 0, j = 0; i < value.Length; i++, j++)
+                {
+                    Table.RowCount = j + 1;
+                    Table.Rows[j].Cells[0].Value = value[i][0];
+                    Table.Rows[j].Cells[1].Value = value[i][1];
+                    Table.Rows[j].Cells[2].Value = value[i][2];
+                }
             }
         }
 
@@ -153,21 +162,6 @@ namespace OS_CP
             {
                 Chart.Series[0].Points.AddXY(param[0], param[1]);
                 Chart.Series[1].Points.AddXY(param[0], param[2]);
-            }
-        }
-
-        /// <summary>
-        /// Filling table
-        /// </summary>
-        /// <param name="table"> data </param>
-        public void DrawTable(double[][] table)
-        {
-            for (int i = 0, j = 0; i < table.Length; i++, j++)
-            {
-                Table.RowCount = j + 1;
-                Table.Rows[j].Cells[0].Value = table[i][0].ToString("F5");
-                Table.Rows[j].Cells[1].Value = table[i][1].ToString("F5");
-                Table.Rows[j].Cells[2].Value = table[i][2].ToString("F5");
             }
         }
 
