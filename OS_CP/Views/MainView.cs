@@ -17,11 +17,6 @@ namespace OS_CP
     public partial class MainView : Form, IMainView
     {
         /// <summary>
-        /// Set function name
-        /// </summary>
-        public string FunctionName { set => Function_name.Text = value; }
-
-        /// <summary>
         /// Get value table
         /// </summary>
         public double[][] ValueTable {

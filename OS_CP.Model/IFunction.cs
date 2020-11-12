@@ -6,11 +6,6 @@
     public interface IFunction
     {
         /// <summary>
-        /// Getting function name
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
         /// Getting and setting function value table size
         /// </summary>
         int Size { get; set; }
