@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace OS_CP.Presenter
 {
@@ -7,6 +8,11 @@ namespace OS_CP.Presenter
     /// </summary>
     public interface IMainView : IView
     {
+        /// <summary>
+        /// Reading chart image from form
+        /// </summary>
+        Bitmap ChartImage { get; }
+
         /// <summary>
         /// Get value table
         /// </summary>

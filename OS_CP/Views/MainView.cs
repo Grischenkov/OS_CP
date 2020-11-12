@@ -21,6 +21,11 @@ namespace OS_CP
         private Series _concentration = new Series("Concentration");    //Series of chart with concentration values
 
         /// <summary>
+        /// Reading chart from form 
+        /// </summary>
+        public Bitmap ChartImage { get; private set; }
+
+        /// <summary>
         /// Get value table
         /// </summary>
         public string[][] ValueTable {
@@ -163,6 +168,8 @@ namespace OS_CP
                 Chart.Series[0].Points.AddXY(param[0], param[1]);
                 Chart.Series[1].Points.AddXY(param[0], param[2]);
             }
+            ChartImage = new Bitmap(Chart.Width, Chart.Height);
+            Chart.DrawToBitmap(ChartImage, new Rectangle(0, 0, Chart.Width, Chart.Height));
         }
 
         /// <summary>
