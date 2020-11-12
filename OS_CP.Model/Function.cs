@@ -36,5 +36,21 @@
         /// <param name="j"> Column index </param>
         /// <returns></returns>
         public double this[int i, int j] { get => Table[i][j]; set => Table[i][j] = value; }
+
+        /// <summary>
+        /// Fill function value table
+        /// </summary>
+        /// <param name="table"> value table </param>
+        public void FillTable(double[][] table)
+        {
+            this.Size = table.Length;
+            for (int i = 0; i < this.Size; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    this.Table[i][j] = table[i][j];
+                }
+            }
+        }
     }
 }

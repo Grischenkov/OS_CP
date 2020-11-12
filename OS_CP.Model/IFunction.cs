@@ -22,5 +22,11 @@
         /// <param name="j"> Column index </param>
         /// <returns></returns>
         double this[int i, int j] { get; set; }
+
+        // <summary>
+        /// Fill function value table
+        /// </summary>
+        /// <param name="table"> value table </param>
+        void FillTable(double[][] table);
     }
 }
