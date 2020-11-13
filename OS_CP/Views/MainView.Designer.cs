@@ -141,33 +141,33 @@
             // 
             this.Open_button.Name = "Open_button";
             this.Open_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Open_button.Size = new System.Drawing.Size(148, 22);
+            this.Open_button.Size = new System.Drawing.Size(180, 22);
             this.Open_button.Text = "Open";
             // 
             // Save_button
             // 
             this.Save_button.Name = "Save_button";
             this.Save_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Save_button.Size = new System.Drawing.Size(148, 22);
+            this.Save_button.Size = new System.Drawing.Size(180, 22);
             this.Save_button.Text = "Save";
             // 
             // Export_button
             // 
             this.Export_button.Name = "Export_button";
             this.Export_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.Export_button.Size = new System.Drawing.Size(148, 22);
+            this.Export_button.Size = new System.Drawing.Size(180, 22);
             this.Export_button.Text = "Export";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // Exit_button
             // 
             this.Exit_button.Name = "Exit_button";
             this.Exit_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.Exit_button.Size = new System.Drawing.Size(148, 22);
+            this.Exit_button.Size = new System.Drawing.Size(180, 22);
             this.Exit_button.Text = "Exit";
             // 
             // Help_toolStrip
@@ -184,24 +184,28 @@
             // Settings_button
             // 
             this.Settings_button.Name = "Settings_button";
-            this.Settings_button.Size = new System.Drawing.Size(116, 22);
+            this.Settings_button.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.Settings_button.Size = new System.Drawing.Size(188, 22);
             this.Settings_button.Text = "Settings";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(113, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(185, 6);
             // 
             // Help_button
             // 
             this.Help_button.Name = "Help_button";
-            this.Help_button.Size = new System.Drawing.Size(116, 22);
+            this.Help_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.Help_button.Size = new System.Drawing.Size(188, 22);
             this.Help_button.Text = "Help";
             // 
             // About_button
             // 
             this.About_button.Name = "About_button";
-            this.About_button.Size = new System.Drawing.Size(116, 22);
+            this.About_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.About_button.Size = new System.Drawing.Size(188, 22);
             this.About_button.Text = "About";
             // 
             // MainView
