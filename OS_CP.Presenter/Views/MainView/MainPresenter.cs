@@ -71,7 +71,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void About()
         {
-            //Controller.Run<AboutPresenter>();
+            Controller.Run<AboutPresenter>();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Help()
         {
-            //Controller.Run<HelpPresenter>();
+            Controller.Run<HelpPresenter>();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Settings()
         {
-            //Controller.Run<SettingsPresenter>();
+            Controller.Run<SettingsPresenter>();
         }
 
         /// <summary>
