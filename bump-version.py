@@ -1,9 +1,12 @@
-﻿import sys
+﻿import datetime
+import sys
 import os
 
 dirname     = os.path.dirname(__file__)
 filename    = os.path.join(dirname, 'OS_CP\Views\AboutView.Designer.cs')
 sub         = "this.Version.Text = "
+curdate     = datetime.datetime.today()
+date        = curdate.strftime("%d/%m/%Y")
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
@@ -16,7 +19,7 @@ if __name__ == "__main__":
             if sub in text:
                 break;
             i = i + 1
-        lines[i] = "            this.Version.Text = " + '"' + "Version: " + sys.argv[1] + '"' + ";" + '\n'  
+        lines[i] = "            this.Version.Text = " + '"' + "Version: " + sys.argv[1] + '    ' + date + '"' + ";" + '\n'  
         
         file = open(filename, "w")
         file.writelines(lines)
