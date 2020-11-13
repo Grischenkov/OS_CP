@@ -36,17 +36,18 @@
             this.Discription_second_line = new System.Windows.Forms.Label();
             this.Discription_first_line = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
+            this.Version = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Author
             // 
             this.Author.AutoSize = true;
             this.Author.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Author.Location = new System.Drawing.Point(12, 337);
+            this.Author.Location = new System.Drawing.Point(12, 318);
             this.Author.Name = "Author";
-            this.Author.Size = new System.Drawing.Size(394, 15);
+            this.Author.Size = new System.Drawing.Size(400, 15);
             this.Author.TabIndex = 12;
-            this.Author.Text = "Grishchenkov Nikita Dmitrievich, gr.№ 485, 2020, SPB SI Of Technology";
+            this.Author.Text = "Grishchenkov Nikita Dmitrievich, gr.№ 485, 2020, SPB SI Of Technology. ";
             // 
             // Discription_third_line
             // 
@@ -92,11 +93,21 @@
             this.Title.TabIndex = 8;
             this.Title.Text = "Operating Systems";
             // 
+            // Version
+            // 
+            this.Version.AutoSize = true;
+            this.Version.Location = new System.Drawing.Point(15, 339);
+            this.Version.Name = "Version";
+            this.Version.Size = new System.Drawing.Size(63, 13);
+            this.Version.TabIndex = 13;
+            this.Version.Text = "Version: 1.1";
+            // 
             // AboutView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 361);
+            this.Controls.Add(this.Version);
             this.Controls.Add(this.Author);
             this.Controls.Add(this.Discription_third_line);
             this.Controls.Add(this.Discription_second_line);
@@ -120,5 +131,6 @@
         private System.Windows.Forms.Label Discription_second_line;
         private System.Windows.Forms.Label Discription_first_line;
         private System.Windows.Forms.Label Title;
+        private System.Windows.Forms.Label Version;
     }
 }
