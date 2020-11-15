@@ -19,12 +19,12 @@ namespace OS_CP
         /// <summary>
         /// 
         /// </summary>
-        public bool ShowVideo { get => ShowLoadScreen_checkBox.Checked; }
+        public bool ShowVideo { get => ShowProcessVideo_checkBox.Checked; set => ShowProcessVideo_checkBox.Checked = value; }
 
         /// <summary>
         /// 
         /// </summary>
-        public bool ShowLoad { get => ShowLoadScreen_checkBox.Checked; }
+        public bool ShowLoad { get => ShowLoadScreen_checkBox.Checked; set => ShowLoadScreen_checkBox.Checked = value; }
 
         /// <summary>
         /// Getting/Setting Export type DLL path
@@ -43,8 +43,8 @@ namespace OS_CP
         {
             InitializeComponent();
 
-            ShowProcessVideo_checkBox.CheckedChanged += (sender, args) => Action(SelectInterpolation);
-            ShowLoadScreen_checkBox.CheckedChanged += (sender, args) => Action(SelectInterpolation);
+            ShowProcessVideo_checkBox.CheckedChanged += (sender, args) => Action(VideoShowing);
+            ShowLoadScreen_checkBox.CheckedChanged += (sender, args) => Action(LoadShowing);
             SelectInterpolation_button.Click += (sender, args) => Action(SelectInterpolation);
             SelectExport_button.Click += (sender, args) => Action(SelectExport);
         }
