@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using OS_CP.Presenter;
 
 namespace OS_CP
@@ -18,6 +20,8 @@ namespace OS_CP
         [STAThread]
         public static void Main()
         {
+            const string RegistryPath = @"Software\Grshchnkv\OS_CP";
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -28,6 +32,13 @@ namespace OS_CP
                 .RegisterView<ISplashView, SplashView>()
                 .RegisterView<ISettingsView, SettingsView>()
                 .RegisterInstance(new ApplicationContext());
+            
+            //Showing splash if user selected
+            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(RegistryPath), "ShowLoad") == "True")
+            {
+                Task.Run(() => controller.Run<SplashPresenter>());
+                Thread.Sleep(5000);
+            }
 
             //Starting program
             controller.Run<MainPresenter>();
