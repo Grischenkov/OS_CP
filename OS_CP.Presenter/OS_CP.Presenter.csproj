@@ -66,6 +66,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\SettingsView\ISettingsView.cs" />
     <Compile Include="Views\SettingsView\SettingsPresenter.cs" />
+    <Compile Include="Views\SplashView\ISplashView.cs" />
+    <Compile Include="Views\SplashView\SplashPresenter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
