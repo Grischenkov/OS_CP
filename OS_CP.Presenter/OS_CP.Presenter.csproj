@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileFunctions.cs" />
+    <Compile Include="RegistryFunctions.cs" />
     <Compile Include="Views\AboutView\AboutPresenter.cs" />
     <Compile Include="ApplicationController.cs" />
     <Compile Include="BasePresenter.cs" />
