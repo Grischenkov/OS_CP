@@ -47,6 +47,8 @@ namespace OS_CP
             ShowLoadScreen_checkBox.CheckedChanged += (sender, args) => Action(LoadShowing);
             SelectInterpolation_button.Click += (sender, args) => Action(SelectInterpolation);
             SelectExport_button.Click += (sender, args) => Action(SelectExport);
+            DiscardInterpolationDll.Click += (sender, args) => Action(DiscardInterpolation);
+            DiscardExportDll.Click += (sender, args) => Action(DiscardExport);
         }
 
         /// <summary>
@@ -68,6 +70,16 @@ namespace OS_CP
         /// Selecting Interpolation type DLL
         /// </summary>
         public event Action SelectInterpolation;
+
+        /// <summary>
+        /// Discarding Export type DLL
+        /// </summary>
+        public event Action DiscardExport;
+
+        /// <summary>
+        /// Discarding Interpolation type DLL
+        /// </summary>
+        public event Action DiscardInterpolation;
 
         /// <summary>
         /// Action
