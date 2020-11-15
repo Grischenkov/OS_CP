@@ -43,8 +43,8 @@ namespace OS_CP
         {
             InitializeComponent();
 
-            ShowProcessVideo_checkBox.CheckedChanged += (sender, args) => Action(SelectInterpolation);
-            ShowLoadScreen_checkBox.CheckedChanged += (sender, args) => Action(SelectInterpolation);
+            ShowProcessVideo_checkBox.CheckedChanged += (sender, args) => Action(VideoShowing);
+            ShowLoadScreen_checkBox.CheckedChanged += (sender, args) => Action(LoadShowing);
             SelectInterpolation_button.Click += (sender, args) => Action(SelectInterpolation);
             SelectExport_button.Click += (sender, args) => Action(SelectExport);
         }
