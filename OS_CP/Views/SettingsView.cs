@@ -19,12 +19,12 @@ namespace OS_CP
         /// <summary>
         /// 
         /// </summary>
-        public bool ShowVideo { get => ShowLoadScreen_checkBox.Checked; }
+        public bool ShowVideo { get => ShowProcessVideo_checkBox.Checked; set => ShowProcessVideo_checkBox.Checked = value; }
 
         /// <summary>
         /// 
         /// </summary>
-        public bool ShowLoad { get => ShowLoadScreen_checkBox.Checked; }
+        public bool ShowLoad { get => ShowLoadScreen_checkBox.Checked; set => ShowLoadScreen_checkBox.Checked = value; }
 
         /// <summary>
         /// Getting/Setting Export type DLL path
