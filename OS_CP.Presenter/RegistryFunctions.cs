@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace OS_CP.Presenter
     /// </summary>
     public static class RegistryFunctions
     {
+        public static readonly string CurrentPath = Directory.GetCurrentDirectory();
+
         /// <summary>
         /// 
         /// </summary>
@@ -19,8 +22,27 @@ namespace OS_CP.Presenter
         /// <returns></returns>
         public static RegistryKey CheckRegistry (string path)
         {
-            return Registry.CurrentUser.OpenSubKey(path, true) ?? 
-                   Registry.CurrentUser.CreateSubKey(path, true);
+            if (Registry.CurrentUser.OpenSubKey(path, true) == null)
+            {
+                Registry.CurrentUser.CreateSubKey(path, true);
+            }
+            string[] keyNames = RegistryFunctions.GetKeys(Registry.CurrentUser.OpenSubKey(path, true));
+            if (keyNames.Length != 4)
+            {
+                SetDefaultValues(Registry.CurrentUser.OpenSubKey(path, true));
+            }
+            return Registry.CurrentUser.OpenSubKey(path, true);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void SetDefaultValues(RegistryKey key)
+        {
+            SetValue(key, "ShowLoad", true.ToString());
+            SetValue(key, "ShowVideo", true.ToString());
+            SetValue(key, "ExportDLLPath", CurrentPath);
+            SetValue(key, "InterpolationDLLPath", CurrentPath);
         }
 
         /// <summary>
