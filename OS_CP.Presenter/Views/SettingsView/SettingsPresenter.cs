@@ -3,9 +3,9 @@
     /// <summary>
     /// Specific presenter interface for Settings view
     /// </summary>
-    public sealed partial class SettingsPresenter : BasePresenter<ISettingsView>
+    public sealed class SettingsPresenter : BasePresenter<ISettingsView>
     {
-        const string path = @"Software\Grshchnkv\OS_CP";
+        private const string Path = @"Software\Grshchnkv\OS_CP";
         
         Microsoft.Win32.RegistryKey RegistryKey;
 
@@ -30,8 +30,8 @@
         /// </summary>
         private void CheckRegistry()
         {
-            RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(path, true) ??
-                            Microsoft.Win32.Registry.CurrentUser.CreateSubKey(path, true);
+            RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(Path, true) ??
+                            Microsoft.Win32.Registry.CurrentUser.CreateSubKey(Path, true);
         }
 
         /// <summary>
@@ -103,7 +103,8 @@
         {
             if (RegistryKey == null) return;
 
-            RegistryKey.SetValue("ExportDLLPath", OpenDLL("dll"));
+            View.ExportDLLPath = FileFunctions.Open("dll");
+            RegistryKey.SetValue("ExportDLLPath", View.ExportDLLPath);
             RegistryKey.Close();
         }
 
@@ -114,7 +115,8 @@
         {
             if (RegistryKey == null) return;
 
-            RegistryKey.SetValue("InterpolationDLLPath", OpenDLL("dll"));
+            View.InterpolationDLLPath = FileFunctions.Open("dll");
+            RegistryKey.SetValue("InterpolationDLLPath", View.InterpolationDLLPath);
             RegistryKey.Close();
         }
     }
