@@ -20,8 +20,6 @@ namespace OS_CP
         [STAThread]
         public static void Main()
         {
-            const string RegistryPath = @"Software\Grshchnkv\OS_CP";
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -34,7 +32,7 @@ namespace OS_CP
                 .RegisterInstance(new ApplicationContext());
             
             //Showing splash if user selected
-            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(RegistryPath), "ShowLoad") == "True")
+            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ShowLoad") == "True")
             {
                 Task.Run(() => controller.Run<SplashPresenter>());
                 Thread.Sleep(5000);

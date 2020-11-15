@@ -9,7 +9,6 @@ namespace OS_CP.Presenter
     /// </summary>
     public sealed class SettingsPresenter : BasePresenter<ISettingsView>
     {
-        private const string RegistryPath = @"Software\Grshchnkv\OS_CP";
         private static readonly string CurrentPath = Directory.GetCurrentDirectory();
 
         private RegistryKey _registryKey;
@@ -34,7 +33,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void LoadValues()
         {
-            _registryKey = RegistryFunctions.CheckRegistry(RegistryPath);
+            _registryKey = RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath);
             
             string[] keyNames = RegistryFunctions.GetKeys(_registryKey);
 
@@ -95,7 +94,7 @@ namespace OS_CP.Presenter
         /// <param name="value"></param>
         private void SaveKeyValue(string name, string value)
         {
-            _registryKey = RegistryFunctions.CheckRegistry(RegistryPath);
+            _registryKey = RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath);
             RegistryFunctions.SetValue(_registryKey, name, value);
             _registryKey.Close();
         }
