@@ -22,10 +22,11 @@ namespace OS_CP
             Application.SetCompatibleTextRenderingDefault(false);
 
             IApplicationController controller = new ApplicationController(new LightInjectAdapter())
+                .RegisterView<IHelpView, HelpView>()
                 .RegisterView<IMainView, MainView>()
                 .RegisterView<IAboutView, AboutView>()
+                .RegisterView<ISplashView, SplashView>()
                 .RegisterView<ISettingsView, SettingsView>()
-                .RegisterView<IHelpView, HelpView>()
                 .RegisterInstance(new ApplicationContext());
 
             //Starting program
