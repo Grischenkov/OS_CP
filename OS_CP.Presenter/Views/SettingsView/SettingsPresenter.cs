@@ -1,4 +1,5 @@
-﻿using System.Security.AccessControl;
+﻿using System.IO;
+using System.Security.AccessControl;
 using Microsoft.Win32;
 
 namespace OS_CP.Presenter
@@ -9,7 +10,8 @@ namespace OS_CP.Presenter
     public sealed class SettingsPresenter : BasePresenter<ISettingsView>
     {
         private const string RegistryPath = @"Software\Grshchnkv\OS_CP";
-        
+        private static readonly string CurrentPath = Directory.GetCurrentDirectory();
+
         private RegistryKey _registryKey;
 
         /// <summary>
@@ -49,10 +51,10 @@ namespace OS_CP.Presenter
                             View.ShowVideo = RegistryFunctions.GetValue(_registryKey, "ShowVideo") == "True";
                             break;
                         case "ExportDLLPath":
-                            View.ExportDLLPath = RegistryFunctions.GetValue(_registryKey, "ExportDLLPath");
+                            View.ExportDLLPath = RegistryFunctions.GetValue(_registryKey, "ExportDLLPath") == CurrentPath ? null : RegistryFunctions.GetValue(_registryKey, "ExportDLLPath");
                             break;
                         case "InterpolationDLLPath":
-                            View.InterpolationDLLPath = RegistryFunctions.GetValue(_registryKey, "InterpolationDLLPath");
+                            View.InterpolationDLLPath = RegistryFunctions.GetValue(_registryKey, "InterpolationDLLPath") == CurrentPath ? null : RegistryFunctions.GetValue(_registryKey, "InterpolationDLLPath");
                             break;
                     }
                 }
@@ -61,8 +63,9 @@ namespace OS_CP.Presenter
             {
                 RegistryFunctions.SetValue(_registryKey, "ShowLoad", true.ToString());
                 RegistryFunctions.SetValue(_registryKey, "ShowVideo", true.ToString());
-                RegistryFunctions.SetValue(_registryKey, "ExportDLLPath", null);
-                RegistryFunctions.SetValue(_registryKey, "InterpolationDLLPath", null);
+                RegistryFunctions.SetValue(_registryKey, "ExportDLLPath", CurrentPath);
+                RegistryFunctions.SetValue(_registryKey, "InterpolationDLLPath", CurrentPath);
+                LoadValues();
             }
             _registryKey.Close();
         }
