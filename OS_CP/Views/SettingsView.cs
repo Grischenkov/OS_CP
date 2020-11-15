@@ -80,6 +80,14 @@ namespace OS_CP
         /// Discarding Interpolation type DLL
         /// </summary>
         public event Action DiscardInterpolation;
+        
+        /// <summary>
+        /// Showing help screen
+        /// </summary>
+        public new void Show()
+        {
+            this.ShowDialog();
+        }
 
         /// <summary>
         /// Action
