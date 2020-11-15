@@ -39,6 +39,8 @@
             this.SelectInterpolation_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.DiscardExportDll = new System.Windows.Forms.Label();
+            this.DiscardInterpolationDll = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ShowProcessVideo_checkBox
@@ -113,11 +115,37 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Interpolation type DLL:";
             // 
+            // DiscardExportDll
+            // 
+            this.DiscardExportDll.AutoSize = true;
+            this.DiscardExportDll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DiscardExportDll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DiscardExportDll.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.DiscardExportDll.Location = new System.Drawing.Point(370, 115);
+            this.DiscardExportDll.Name = "DiscardExportDll";
+            this.DiscardExportDll.Size = new System.Drawing.Size(43, 13);
+            this.DiscardExportDll.TabIndex = 8;
+            this.DiscardExportDll.Text = "Discard";
+            // 
+            // DiscardInterpolationDll
+            // 
+            this.DiscardInterpolationDll.AutoSize = true;
+            this.DiscardInterpolationDll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DiscardInterpolationDll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DiscardInterpolationDll.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.DiscardInterpolationDll.Location = new System.Drawing.Point(370, 175);
+            this.DiscardInterpolationDll.Name = "DiscardInterpolationDll";
+            this.DiscardInterpolationDll.Size = new System.Drawing.Size(43, 13);
+            this.DiscardInterpolationDll.TabIndex = 9;
+            this.DiscardInterpolationDll.Text = "Discard";
+            // 
             // SettingsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 212);
+            this.ClientSize = new System.Drawing.Size(418, 212);
+            this.Controls.Add(this.DiscardInterpolationDll);
+            this.Controls.Add(this.DiscardExportDll);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SelectInterpolation_button);
@@ -147,5 +175,7 @@
         private System.Windows.Forms.Button SelectInterpolation_button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label DiscardExportDll;
+        private System.Windows.Forms.Label DiscardInterpolationDll;
     }
 }

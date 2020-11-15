@@ -1,13 +1,15 @@
-﻿namespace OS_CP.Presenter
+﻿using System.IO;
+using System.Security.AccessControl;
+using Microsoft.Win32;
+
+namespace OS_CP.Presenter
 {
     /// <summary>
     /// Specific presenter interface for Settings view
     /// </summary>
     public sealed class SettingsPresenter : BasePresenter<ISettingsView>
     {
-        private const string Path = @"Software\Grshchnkv\OS_CP";
-        
-        Microsoft.Win32.RegistryKey RegistryKey;
+        private RegistryKey _registryKey;
 
         /// <summary>
         /// Constructor of SettingsPresenter class
@@ -16,22 +18,14 @@
         /// <param name="view"> View </param>
         public SettingsPresenter(IApplicationController controller, ISettingsView view) : base(controller, view)
         {
-            CheckRegistry();
             LoadValues();
 
-            View.LoadShowing += LoadShowing;
-            View.VideoShowing += VideoShowing;
+            View.LoadShowing += () => SaveKeyValue("ShowLoad", View.ShowLoad.ToString());
+            View.VideoShowing += () => SaveKeyValue("ShowVideo", View.ShowVideo.ToString());
             View.SelectExport += SelectExport;
             View.SelectInterpolation += SelectInterpolation;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void CheckRegistry()
-        {
-            RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(Path, true) ??
-                            Microsoft.Win32.Registry.CurrentUser.CreateSubKey(Path, true);
+            View.DiscardExport += () => DiscardPath("ExportDLLPath");
+            View.DiscardInterpolation += () => DiscardPath("InterpolationDLLPath");
         }
 
         /// <summary>
@@ -39,61 +33,27 @@
         /// </summary>
         private void LoadValues()
         {
-            if (RegistryKey == null) return;
-
-            string[] keyNames = RegistryKey.GetValueNames();
-            if (keyNames.Length != 0)
+            _registryKey = RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath);
+            string[] keyNames = RegistryFunctions.GetKeys(_registryKey);
+            foreach (string keyName in keyNames)
             {
-                foreach (string keyName in keyNames)
+                switch (keyName)
                 {
-                    switch (keyName)
-                    {
-                        case "ShowLoad":
-                            View.ShowLoad = (bool)RegistryKey.GetValue("ShowLoad");
-                            break;
-                        case "ShowVideo":
-                            View.ShowVideo = (bool)RegistryKey.GetValue("ShowVideo");
-                            break;
-                        case "ExportDLLPath":
-                            View.ExportDLLPath = (string)RegistryKey.GetValue("ExportDLLPath");
-                            break;
-                        case "InterpolationDLLPath":
-                            View.InterpolationDLLPath = (string)RegistryKey.GetValue("InterpolationDLLPath");
-                            break;
-                    }
+                    case "ShowLoad":
+                        View.ShowLoad = RegistryFunctions.GetValue(_registryKey, "ShowLoad") == "True";
+                        break;
+                    case "ShowVideo":
+                        View.ShowVideo = RegistryFunctions.GetValue(_registryKey, "ShowVideo") == "True";
+                        break;
+                    case "ExportDLLPath":
+                        View.ExportDLLPath = RegistryFunctions.GetValue(_registryKey, "ExportDLLPath") == RegistryFunctions.CurrentPath ? null : RegistryFunctions.GetValue(_registryKey, "ExportDLLPath");
+                        break;
+                    case "InterpolationDLLPath":
+                        View.InterpolationDLLPath = RegistryFunctions.GetValue(_registryKey, "InterpolationDLLPath") == RegistryFunctions.CurrentPath ? null : RegistryFunctions.GetValue(_registryKey, "InterpolationDLLPath");
+                        break;
                 }
-                RegistryKey.Close();
             }
-            else
-            {
-                RegistryKey.SetValue("ShowLoad", true);
-                RegistryKey.SetValue("ShowVideo", true);
-                RegistryKey.SetValue("ExportDLLPath", null);
-                RegistryKey.SetValue("InterpolationDLLPath", null);
-                RegistryKey.Close();
-            }
-        }
-
-        /// <summary>
-        /// Change load settings
-        /// </summary>
-        private void LoadShowing()
-        {
-            if (RegistryKey == null) return;
-
-            RegistryKey.SetValue("ShowLoad", View.ShowLoad);
-            RegistryKey.Close();
-        }
-
-        /// <summary>
-        /// Change video settings
-        /// </summary>
-        private void VideoShowing()
-        {
-            if (RegistryKey == null) return;
-
-            RegistryKey.SetValue("ShowLoad", View.ShowVideo);
-            RegistryKey.Close();
+            _registryKey.Close();
         }
 
         /// <summary>
@@ -101,11 +61,8 @@
         /// </summary>
         private void SelectExport()
         {
-            if (RegistryKey == null) return;
-
             View.ExportDLLPath = FileFunctions.Open("dll");
-            RegistryKey.SetValue("ExportDLLPath", View.ExportDLLPath);
-            RegistryKey.Close();
+            SaveKeyValue("ExportDLLPath", View.ExportDLLPath);
         }
 
         /// <summary>
@@ -113,11 +70,34 @@
         /// </summary>
         private void SelectInterpolation()
         {
-            if (RegistryKey == null) return;
-
             View.InterpolationDLLPath = FileFunctions.Open("dll");
-            RegistryKey.SetValue("InterpolationDLLPath", View.InterpolationDLLPath);
-            RegistryKey.Close();
+            SaveKeyValue("InterpolationDLLPath", View.InterpolationDLLPath);
+        }
+
+        private void DiscardPath(string name)
+        {
+            switch (name)
+            {
+                case "ExportDLLPath":
+                    View.ExportDLLPath = null;
+                    break;
+                case "InterpolationDLLPath":
+                    View.InterpolationDLLPath = null;
+                    break;
+            }
+            SaveKeyValue(name, RegistryFunctions.CurrentPath);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        private void SaveKeyValue(string name, string value)
+        {
+            _registryKey = RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath);
+            RegistryFunctions.SetValue(_registryKey, name, value);
+            _registryKey.Close();
         }
     }
 }
