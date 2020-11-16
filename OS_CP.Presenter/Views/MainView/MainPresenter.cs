@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using OS_CP.Model;
@@ -47,7 +48,7 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Open()
         {
-           //View.ValueTable = ReadTable();
+           View.ValueTable = DoubleToString(ReadTable());
         }
 
         /// <summary>
@@ -97,43 +98,61 @@ namespace OS_CP.Presenter
         private double[][] ReadTable()
         {
             double[][] table = null;
+            List<string> lines = new List<string>();
 
+            int i;
             using (StreamReader sr = new StreamReader(FileFunctions.Open("txt")))
             {
-                int i = 0;
+                i = 0;
                 do
                 {
-                    string str = sr.ReadLine();
+                    lines.Add(sr.ReadLine());
                     i++;
                 } while (!sr.EndOfStream);
-
                 table = new double[i][];
-                i = 0;
-
-                do
+            }
+            i = 0;
+            foreach (var line in lines)
+            {
+                if (!string.IsNullOrEmpty(line))
                 {
-                    string str = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(str))
+                    double[] arr = line.Split(' ').Select(double.Parse).ToArray();
+                    if (arr.Length != 3)
                     {
-                        double[] arr = str.Split(' ').Select(double.Parse).ToArray();
-                        if (arr.Length != 3)
-                        {
-                            throw new ArgumentException("Incorrect data in file!");
-                        }
-                        else
-                        {
-                            table[i] = new double[3];
-                            table[i][0] = arr[0];
-                            table[i][1] = arr[1];
-                            table[i][2] = arr[2];
-                            i++;
-                        }
+                        throw new ArgumentException("Incorrect data in file!");
                     }
                     else
                     {
-                        throw new Exception("Error opening file!");
+                        table[i] = new double[3];
+                        table[i][0] = arr[0];
+                        table[i][1] = arr[1];
+                        table[i][2] = arr[2];
+                        i++;
                     }
-                } while (!sr.EndOfStream);
+                }
+                else
+                {
+                    throw new Exception("Error opening file!");
+                }
+            }
+            return table;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        private string[][] DoubleToString(double[][] array)
+        {
+            string[][] table = new string[array.Length][];
+            for (int i = 0; i < array.Length; i++)
+            {
+                table[i] = new string[3];
+                for (int j =0; j < 3; j++)
+                {
+                    table[i][j] = array[i][j].ToString();
+                }
             }
 
             return table;
