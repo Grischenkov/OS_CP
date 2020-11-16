@@ -51,7 +51,7 @@
         }
     }
 
-    public abstract class BasePresenter<TView, TArg> : IPresenter<TArg> where TView : IView
+    public abstract class BasePresenter<TView, TArg1, TArg2> : IPresenter<TArg1, TArg2> where TView : IView
     {
         /// <summary>
         /// 
@@ -85,7 +85,8 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="argument"></param>
-        public abstract void Run(TArg argument);
+        /// <param name="argument1"></param>
+        /// <param name="argument2"></param>
+        public abstract void Run(TArg1 argument1, TArg2 argument2);
     }
 }

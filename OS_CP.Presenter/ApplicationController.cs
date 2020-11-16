@@ -56,5 +56,22 @@
             var presenter = _container.Resolve<TPresenter>();
             presenter.Run();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TPresenter"></typeparam>
+        /// <typeparam name="TArg1"></typeparam>
+        /// <typeparam name="TArg2"></typeparam>
+        /// <param name="argument1"></param>
+        /// <param name="argument2"></param>
+        public void Run<TPresenter, TArg1, TArg2>(TArg1 argument1, TArg2 argument2) where TPresenter : class, IPresenter<TArg1, TArg2>
+        {
+            if (!_container.IsRegistered<TPresenter>())
+                _container.Register<TPresenter>();
+
+            var presenter = _container.Resolve<TPresenter>();
+            presenter.Run(argument1, argument2);
+        }
     }
 }
