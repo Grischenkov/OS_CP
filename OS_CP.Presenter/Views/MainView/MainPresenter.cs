@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using OS_CP.Model;
 
@@ -67,7 +69,16 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Export()
         {
-            //ExportData();
+            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath") == Directory.GetCurrentDirectory()) 
+                throw new Exception("Export library not selected." + '\n' + "Specify the path to the required file in the Settings window!");
+
+            _function.FillTable(CheckValues(View.ValueTable));
+            Assembly   assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")));
+            Type       type     = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")) + ".EXPORT");
+            Object     cls      = Activator.CreateInstance(type);
+            MethodInfo method   = type.GetMethod("Export");
+
+            method.Invoke(cls, new object[] { _function.Table });
         }
 
         /// <summary>
