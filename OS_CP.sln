@@ -14,6 +14,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		bump-version.py = bump-version.py
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSExcelExport", "MSExcelExport\MSExcelExport.csproj", "{0B4A9DC8-1F20-4BAF-9690-BABCF376CD15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLLs", "DLLs", "{05EFED80-580A-4F76-9E9D-E6BA522B5C21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EXPORT", "EXPORT", "{3C1CCA32-1345-455A-92F4-101C2A086873}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{C85FA1F2-7A57-42C4-ACF8-6F606104D80F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +40,17 @@ Global
 		{8E14E5DF-697F-4F6A-9C53-E0F131E093A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E14E5DF-697F-4F6A-9C53-E0F131E093A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E14E5DF-697F-4F6A-9C53-E0F131E093A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4A9DC8-1F20-4BAF-9690-BABCF376CD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4A9DC8-1F20-4BAF-9690-BABCF376CD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4A9DC8-1F20-4BAF-9690-BABCF376CD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4A9DC8-1F20-4BAF-9690-BABCF376CD15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C1CCA32-1345-455A-92F4-101C2A086873} = {05EFED80-580A-4F76-9E9D-E6BA522B5C21}
+		{C85FA1F2-7A57-42C4-ACF8-6F606104D80F} = {05EFED80-580A-4F76-9E9D-E6BA522B5C21}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F4042A74-E962-4427-998D-79A67F4AD783}
