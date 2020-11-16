@@ -74,6 +74,16 @@ namespace MSExcelExport
                     workbook.SaveAs(filePath);
 
                     excel.Visible = true;
+                    try
+                    {
+                        workbook.Close();
+                        excel.Quit();
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                    }
+
                     break;
                 }
                 case DialogResult.Cancel:
