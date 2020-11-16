@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\SaveView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SaveView.Designer.cs">
+      <DependentUpon>SaveView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SplashView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SaveView.resx">
+      <DependentUpon>SaveView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SettingsView.resx">
       <DependentUpon>SettingsView.cs</DependentUpon>

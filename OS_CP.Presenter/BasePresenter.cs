@@ -50,4 +50,43 @@
             View.Close();
         }
     }
+
+    public abstract class BasePresenter<TView, TArg1, TArg2> : IPresenter<TArg1, TArg2> where TView : IView
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected TView View { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected IApplicationController Controller { get; }
+
+        /// <summary>
+        /// Base constructor of class
+        /// </summary>
+        protected BasePresenter()
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="controller"></param>
+        /// <param name="view"></param>
+        protected BasePresenter(IApplicationController controller, TView view)
+        {
+            Controller = controller;
+            View = view;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="argument1"></param>
+        /// <param name="argument2"></param>
+        public abstract void Run(TArg1 argument1, TArg2 argument2);
+    }
 }
