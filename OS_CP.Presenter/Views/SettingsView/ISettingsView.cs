@@ -48,6 +48,16 @@ namespace OS_CP.Presenter
         event Action SelectInterpolation;
 
         /// <summary>
+        /// Discarding Export type DLL
+        /// </summary>
+        event Action DiscardExport;
+
+        /// <summary>
+        /// Discarding Interpolation type DLL
+        /// </summary>
+        event Action DiscardInterpolation;
+
+        /// <summary>
         /// Showing message about error
         /// </summary>
         /// <param name="errorMessage"> Error message </param>

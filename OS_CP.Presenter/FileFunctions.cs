@@ -32,7 +32,7 @@ namespace OS_CP.Presenter
                     break;
                 case DialogResult.Cancel:
                     _filePath = null;
-                    throw new Exception("Reading canceled.");
+                    break;
                 default:
                     _filePath = null;
                     throw new Exception("Error opening file!");
@@ -67,7 +67,7 @@ namespace OS_CP.Presenter
                     break;
                 case DialogResult.Cancel:
                     _filePath = null;
-                    throw new Exception("Writing canceled.");
+                    break;
                 default:
                     _filePath = null;
                     throw new Exception("Error saving file!");
