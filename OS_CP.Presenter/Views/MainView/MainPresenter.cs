@@ -11,7 +11,7 @@ namespace OS_CP.Presenter
     /// </summary>
     public sealed class MainPresenter : BasePresenter<IMainView>
     {
-        private Function _function; //Object of class Function for work with model
+        private readonly Function _function; //Object of class Function for work with model
 
         /// <summary>
         /// Constructor of MainPresenter class
@@ -56,7 +56,8 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Save()
         {
-            //Controller.Run<SavePresenter>();
+            _function.FillTable(CheckValues(View.ValueTable));
+            Controller.Run<SavePresenter, bool>(View.ChartImage != null);
         }
 
         /// <summary>
@@ -165,6 +166,7 @@ namespace OS_CP.Presenter
         /// <returns></returns>
         private double[][] CheckValues (string[][] srcTable)
         {
+            if (srcTable.Length < 2) throw new Exception("Input data must contain at least two lines!");
             double[][] table = new double[srcTable.Length][];
 
             for (int i = 0; i < table.Length; i++)
@@ -174,7 +176,7 @@ namespace OS_CP.Presenter
                 {
                     if (String.IsNullOrEmpty(srcTable[i][j]))
                     {
-                        throw new Exception($"Заполните {j+1}-й элемент {i+1}-й строки таблицы!");
+                        throw new Exception($"Fill in the {j + 1} th element of the {i + 1} th row of the table!");
                     }
 
                     table[i][j] = Double.Parse(srcTable[i][j]);
