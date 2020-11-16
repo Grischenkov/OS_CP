@@ -15,4 +15,17 @@
         /// </summary>
         void Exit();
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TArg"></typeparam>
+    public interface IPresenter<in TArg>
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="argument"></param>
+        void Run(TArg argument);
+    }
 }
