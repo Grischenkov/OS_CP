@@ -3,54 +3,59 @@
 namespace OS_CP.Presenter
 {
     /// <summary>
-    /// Specific view interface for Main view
+    /// Specific view interface for Settings view
     /// </summary>
-    public interface IMainView : IView
+    public interface ISettingsView : IView
     {
         /// <summary>
-        /// Setting function name
+        /// 
         /// </summary>
-        string FuncName { set; }
+        bool ShowVideo { get; set;  }
 
         /// <summary>
-        /// Calculating function value table, drawing chart
+        /// 
         /// </summary>
-        event Action Calculate;
+        bool ShowLoad { get; set; }
 
         /// <summary>
-        /// Reading data
+        /// Getting/Setting Export type DLL path
         /// </summary>
-        event Action Open;
+        string ExportDLLPath { get; set; }
 
         /// <summary>
-        /// Saving data
+        /// Getting/Setting Interpolation type DLL path
         /// </summary>
-        event Action Save;
+        string InterpolationDLLPath { get; set; }
+        
+        /// <summary>
+        /// Editing load settings
+        /// </summary>
+        event Action LoadShowing;
 
         /// <summary>
-        /// Exporting data to Excel
+        /// Editing video settings
         /// </summary>
-        event Action Export;
+        event Action VideoShowing;
 
         /// <summary>
-        /// Showing about window
+        /// Selecting Export type DLL
         /// </summary>
-        event Action About;
+        event Action SelectExport;
 
         /// <summary>
-        /// Showing about window
+        /// Selecting Interpolation type DLL
         /// </summary>
-        event Action Help;
+        event Action SelectInterpolation;
 
         /// <summary>
-        /// Showing about window
+        /// Discarding Export type DLL
         /// </summary>
-        event Action Settings;
+        event Action DiscardExport;
 
         /// <summary>
-        /// Exiting program
+        /// Discarding Interpolation type DLL
         /// </summary>
-        event Action Exit;
+        event Action DiscardInterpolation;
 
         /// <summary>
         /// Showing message about error
@@ -69,17 +74,5 @@ namespace OS_CP.Presenter
         /// </summary>
         /// <param name="successMessage"> Success message </param>
         void ShowSuccess(string successMessage);
-
-        /// <summary>
-        /// Drawing chart in main form
-        /// </summary>
-        /// <param name="table"> Function value table </param>
-        void DrawChart(double[][] table);
-
-        /// <summary>
-        /// Filling table in main form
-        /// </summary>
-        /// <param name="table"> Function value table </param>
-        void DrawTable(double[][] table);
     }
 }
