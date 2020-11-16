@@ -46,7 +46,7 @@ namespace OS_CP.Presenter
         /// </summary>
         /// <param name="format"> file format </param>
         /// <returns> path to chosen file </returns>
-        private static string Save(string format)
+        public static string Save(string format)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
             

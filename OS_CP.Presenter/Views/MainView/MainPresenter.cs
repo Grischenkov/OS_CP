@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using OS_CP.Model;
 
 namespace OS_CP.Presenter
@@ -57,7 +59,7 @@ namespace OS_CP.Presenter
         private void Save()
         {
             _function.FillTable(CheckValues(View.ValueTable));
-            Controller.Run<SavePresenter, bool>(View.ChartImage != null);
+            Controller.Run<SavePresenter, Function, Bitmap>(_function, View.ChartImage);
         }
 
         /// <summary>
