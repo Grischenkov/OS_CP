@@ -43,12 +43,12 @@ namespace OS_CP
             }
             set
             {
-                for (int i = 0, j = 0; i < value.Length; i++, j++)
+                for (int i = 0, j = 1; i < value.Length; i++, j++)
                 {
                     Table.RowCount = j + 1;
-                    Table.Rows[j].Cells[0].Value = value[i][0];
-                    Table.Rows[j].Cells[1].Value = value[i][1];
-                    Table.Rows[j].Cells[2].Value = value[i][2];
+                    Table.Rows[i].Cells[0].Value = value[i][0];
+                    Table.Rows[i].Cells[1].Value = value[i][1];
+                    Table.Rows[i].Cells[2].Value = value[i][2];
                 }
             }
         }
