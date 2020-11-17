@@ -89,11 +89,11 @@ namespace OS_CP.Presenter
         /// <returns></returns>
         private double[][] ProcessData(double[][] table)
         {
-            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "InterpolationDLLPath") == Directory.GetCurrentDirectory())
+            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath") == Directory.GetCurrentDirectory())
                 return table;
 
-            Assembly assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "InterpolationDLLPath")));
-            Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "InterpolationDLLPath")) + ".MATH");
+            Assembly assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")));
+            Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")) + ".MATH");
             Object cls = Activator.CreateInstance(type);
             MethodInfo method = type.GetMethod("Process");
 
