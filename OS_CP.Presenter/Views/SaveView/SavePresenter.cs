@@ -9,10 +9,10 @@ namespace OS_CP.Presenter
     /// <summary>
     /// Specific presenter interface for Splash view
     /// </summary>
-    public sealed class SavePresenter : BasePresenter<ISaveView, Function, Bitmap>
+    public sealed class SavePresenter : BasePresenter<ISaveView, double[][], Bitmap>
     {
         private Bitmap _chart;
-        private Function _function;
+        private double[][] _array;
 
         /// <summary>
         /// Constructor of SplashPresenter class
@@ -30,12 +30,12 @@ namespace OS_CP.Presenter
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="function"></param>
+        /// <param name="table"></param>
         /// <param name="chart"></param>
-        public override void Run(Function function, Bitmap chart)
+        public override void Run(double[][] table, Bitmap chart)
         {
             _chart = chart;
-            _function = function;
+            _array = table;
             View.SaveChartImageEnabled = _chart != null;
             View.Show();
         }
@@ -54,9 +54,9 @@ namespace OS_CP.Presenter
             {
                 using (StreamWriter sw = new StreamWriter(FileFunctions.Save("txt")))
                 {
-                    for (int i = 0; i < _function.Size; i++)
+                    for (int i = 0; i < _array.Length; i++)
                     {
-                        sw.WriteLine($"{_function.Table[i][0]} {_function.Table[i][1]} {_function.Table[i][2]}");
+                        sw.WriteLine($"{_array[i][0]} {_array[i][1]} {_array[i][2]}");
                     }
                 }
             }
