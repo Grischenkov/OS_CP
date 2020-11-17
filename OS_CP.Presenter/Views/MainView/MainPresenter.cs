@@ -44,7 +44,7 @@ namespace OS_CP.Presenter
         private void Calculate()
         {
             _function.FillTable(CheckValues(View.ValueTable));
-            View.DrawChart(/*ProcessData(*/_function.Table/*)*/);
+            View.DrawChart(ProcessData(_function.Table));
         }
 
         /// <summary>
@@ -52,7 +52,8 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Open()
         {
-           View.ValueTable = DoubleToString(ReadTable());
+            _function.FillTable(CheckValues(DoubleToString(ReadTable())));
+            View.ValueTable = ProcessData(DoubleToString(_function.Table));
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace OS_CP.Presenter
         private void Save()
         {
             _function.FillTable(CheckValues(View.ValueTable));
-            Controller.Run<SavePresenter, Function, Bitmap>(_function, View.ChartImage);
+            Controller.Run<SavePresenter, double[][], Bitmap>(ProcessData(_function.Table), View.ChartImage);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace OS_CP.Presenter
             Object     cls      = Activator.CreateInstance(type);
             MethodInfo method   = type.GetMethod("Export");
 
-            method.Invoke(cls, new object[] { _function.Table });
+            method.Invoke(cls, new object[] { ProcessData(_function.Table) });
         }
 
         /// <summary>
