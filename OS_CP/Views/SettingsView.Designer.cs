@@ -35,12 +35,12 @@
             this.ShowLoadScreen_checkBox = new System.Windows.Forms.CheckBox();
             this.SelectExport_button = new System.Windows.Forms.Button();
             this.ExportDLL_textBox = new System.Windows.Forms.TextBox();
-            this.InterpolationDLL_textBox = new System.Windows.Forms.TextBox();
-            this.SelectInterpolation_button = new System.Windows.Forms.Button();
+            this.MathDLL_textBox = new System.Windows.Forms.TextBox();
+            this.SelectMath_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.DiscardExportDll = new System.Windows.Forms.Label();
-            this.DiscardInterpolationDll = new System.Windows.Forms.Label();
+            this.DiscardMathDll = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ShowProcessVideo_checkBox
@@ -80,22 +80,22 @@
             this.ExportDLL_textBox.Size = new System.Drawing.Size(271, 20);
             this.ExportDLL_textBox.TabIndex = 3;
             // 
-            // InterpolationDLL_textBox
+            // MathDLL_textBox
             // 
-            this.InterpolationDLL_textBox.Location = new System.Drawing.Point(12, 172);
-            this.InterpolationDLL_textBox.Name = "InterpolationDLL_textBox";
-            this.InterpolationDLL_textBox.ReadOnly = true;
-            this.InterpolationDLL_textBox.Size = new System.Drawing.Size(271, 20);
-            this.InterpolationDLL_textBox.TabIndex = 4;
+            this.MathDLL_textBox.Location = new System.Drawing.Point(12, 172);
+            this.MathDLL_textBox.Name = "MathDLL_textBox";
+            this.MathDLL_textBox.ReadOnly = true;
+            this.MathDLL_textBox.Size = new System.Drawing.Size(271, 20);
+            this.MathDLL_textBox.TabIndex = 4;
             // 
-            // SelectInterpolation_button
+            // SelectMath_button
             // 
-            this.SelectInterpolation_button.Location = new System.Drawing.Point(289, 170);
-            this.SelectInterpolation_button.Name = "SelectInterpolation_button";
-            this.SelectInterpolation_button.Size = new System.Drawing.Size(75, 23);
-            this.SelectInterpolation_button.TabIndex = 5;
-            this.SelectInterpolation_button.Text = "Select";
-            this.SelectInterpolation_button.UseVisualStyleBackColor = true;
+            this.SelectMath_button.Location = new System.Drawing.Point(289, 170);
+            this.SelectMath_button.Name = "SelectMath_button";
+            this.SelectMath_button.Size = new System.Drawing.Size(75, 23);
+            this.SelectMath_button.TabIndex = 5;
+            this.SelectMath_button.Text = "Select";
+            this.SelectMath_button.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -111,9 +111,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 156);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 13);
+            this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Interpolation type DLL:";
+            this.label2.Text = "Math type DLL:";
             // 
             // DiscardExportDll
             // 
@@ -127,29 +127,29 @@
             this.DiscardExportDll.TabIndex = 8;
             this.DiscardExportDll.Text = "Discard";
             // 
-            // DiscardInterpolationDll
+            // DiscardMathDll
             // 
-            this.DiscardInterpolationDll.AutoSize = true;
-            this.DiscardInterpolationDll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DiscardInterpolationDll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DiscardInterpolationDll.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.DiscardInterpolationDll.Location = new System.Drawing.Point(370, 175);
-            this.DiscardInterpolationDll.Name = "DiscardInterpolationDll";
-            this.DiscardInterpolationDll.Size = new System.Drawing.Size(43, 13);
-            this.DiscardInterpolationDll.TabIndex = 9;
-            this.DiscardInterpolationDll.Text = "Discard";
+            this.DiscardMathDll.AutoSize = true;
+            this.DiscardMathDll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DiscardMathDll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DiscardMathDll.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.DiscardMathDll.Location = new System.Drawing.Point(370, 175);
+            this.DiscardMathDll.Name = "DiscardMathDll";
+            this.DiscardMathDll.Size = new System.Drawing.Size(43, 13);
+            this.DiscardMathDll.TabIndex = 9;
+            this.DiscardMathDll.Text = "Discard";
             // 
             // SettingsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 212);
-            this.Controls.Add(this.DiscardInterpolationDll);
+            this.Controls.Add(this.DiscardMathDll);
             this.Controls.Add(this.DiscardExportDll);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.SelectInterpolation_button);
-            this.Controls.Add(this.InterpolationDLL_textBox);
+            this.Controls.Add(this.SelectMath_button);
+            this.Controls.Add(this.MathDLL_textBox);
             this.Controls.Add(this.ExportDLL_textBox);
             this.Controls.Add(this.SelectExport_button);
             this.Controls.Add(this.ShowLoadScreen_checkBox);
@@ -171,11 +171,11 @@
         private System.Windows.Forms.CheckBox ShowLoadScreen_checkBox;
         private System.Windows.Forms.Button SelectExport_button;
         private System.Windows.Forms.TextBox ExportDLL_textBox;
-        private System.Windows.Forms.TextBox InterpolationDLL_textBox;
-        private System.Windows.Forms.Button SelectInterpolation_button;
+        private System.Windows.Forms.TextBox MathDLL_textBox;
+        private System.Windows.Forms.Button SelectMath_button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label DiscardExportDll;
-        private System.Windows.Forms.Label DiscardInterpolationDll;
+        private System.Windows.Forms.Label DiscardMathDll;
     }
 }

@@ -32,9 +32,9 @@ namespace OS_CP
         public string ExportDLLPath { get => ExportDLL_textBox.Text; set => ExportDLL_textBox.Text = value; }
 
         /// <summary>
-        /// Getting/Setting Interpolation type DLL path
+        /// Getting/Setting Math type DLL path
         /// </summary>
-        public string InterpolationDLLPath { get => InterpolationDLL_textBox.Text; set => InterpolationDLL_textBox.Text = value; }
+        public string MathDLLPath { get => MathDLL_textBox.Text; set => MathDLL_textBox.Text = value; }
         
         /// <summary>
         /// 
@@ -45,9 +45,9 @@ namespace OS_CP
 
             ShowProcessVideo_checkBox.CheckedChanged += (sender, args) => Action(VideoShowing);
             ShowLoadScreen_checkBox.CheckedChanged += (sender, args) => Action(LoadShowing);
-            SelectInterpolation_button.Click += (sender, args) => Action(SelectInterpolation);
+            SelectMath_button.Click += (sender, args) => Action(SelectMath);
             SelectExport_button.Click += (sender, args) => Action(SelectExport);
-            DiscardInterpolationDll.Click += (sender, args) => Action(DiscardInterpolation);
+            DiscardMathDll.Click += (sender, args) => Action(DiscardMath);
             DiscardExportDll.Click += (sender, args) => Action(DiscardExport);
         }
 
@@ -67,9 +67,9 @@ namespace OS_CP
         public event Action SelectExport;
 
         /// <summary>
-        /// Selecting Interpolation type DLL
+        /// Selecting Math type DLL
         /// </summary>
-        public event Action SelectInterpolation;
+        public event Action SelectMath;
 
         /// <summary>
         /// Discarding Export type DLL
@@ -77,9 +77,9 @@ namespace OS_CP
         public event Action DiscardExport;
 
         /// <summary>
-        /// Discarding Interpolation type DLL
+        /// Discarding Math type DLL
         /// </summary>
-        public event Action DiscardInterpolation;
+        public event Action DiscardMath;
         
         /// <summary>
         /// Showing help screen
