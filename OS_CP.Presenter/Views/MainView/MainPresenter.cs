@@ -44,7 +44,7 @@ namespace OS_CP.Presenter
         private void Calculate()
         {
             _function.FillTable(CheckValues(View.ValueTable));
-            View.DrawChart(/*ProcessData(*/_function.Table/*)*/);
+            View.DrawChart(ProcessData(_function.Table));
         }
 
         /// <summary>
@@ -52,7 +52,8 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Open()
         {
-           View.ValueTable = DoubleToString(ReadTable());
+            _function.FillTable(CheckValues(DoubleToString(ReadTable())));
+            View.ValueTable = DoubleToString(ProcessData(_function.Table));
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace OS_CP.Presenter
         private void Save()
         {
             _function.FillTable(CheckValues(View.ValueTable));
-            Controller.Run<SavePresenter, Function, Bitmap>(_function, View.ChartImage);
+            Controller.Run<SavePresenter, double[][], Bitmap>(ProcessData(_function.Table), View.ChartImage);
         }
 
         /// <summary>
@@ -78,7 +79,25 @@ namespace OS_CP.Presenter
             Object     cls      = Activator.CreateInstance(type);
             MethodInfo method   = type.GetMethod("Export");
 
-            method.Invoke(cls, new object[] { _function.Table });
+            method.Invoke(cls, new object[] { ProcessData(_function.Table) });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        private double[][] ProcessData(double[][] table)
+        {
+            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath") == Directory.GetCurrentDirectory())
+                return table;
+
+            Assembly assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")));
+            Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")) + ".MATH");
+            Object cls = Activator.CreateInstance(type);
+            MethodInfo method = type.GetMethod("Process");
+
+            return (double[][])method.Invoke(cls, new object[] { _function.Table });
         }
 
         /// <summary>
