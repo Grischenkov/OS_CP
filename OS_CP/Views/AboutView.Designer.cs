@@ -100,7 +100,7 @@
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(133, 13);
             this.Version.TabIndex = 13;
-            this.Version.Text = "Version: 1.1    12/11/2020";
+            this.Version.Text = "Version: 1.4    16/11/2020";
             // 
             // AboutView
             // 

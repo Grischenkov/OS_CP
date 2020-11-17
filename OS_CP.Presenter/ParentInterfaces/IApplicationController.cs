@@ -26,5 +26,15 @@
         /// </summary>
         /// <typeparam name="TPresenter"> View presenter </typeparam>
         void Run<TPresenter>() where TPresenter : class, IPresenter;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TPresenter"></typeparam>
+        /// <typeparam name="TArg1"></typeparam>
+        /// <typeparam name="TArg2"></typeparam>
+        /// <param name="argument1"></param>
+        /// <param name="argument2"></param>
+        void Run<TPresenter, TArg1, TArg2>(TArg1 argument1, TArg2 argument2) where TPresenter : class, IPresenter<TArg1, TArg2>;
     }
 }

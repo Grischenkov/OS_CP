@@ -11,60 +11,37 @@ using OS_CP.Presenter;
 
 namespace OS_CP
 {
-    /// <summary>
-    /// Class of program for work with help screen
-    /// </summary>
-    public partial class HelpView : Form, IHelpView
+    public partial class SaveView : Form, ISaveView
     {
         /// <summary>
         /// 
         /// </summary>
-        public string TextInfo { set => Info_textBox.Text = value; }
+        public bool SaveValueTable { get => SaveValuesTable_checkBox.Checked; set => SaveValuesTable_checkBox.Checked = value; }
 
         /// <summary>
-        /// Base constructor
+        /// 
         /// </summary>
-        public HelpView()
+        public bool SaveChartImage { get => SaveChartImage_checkBox.Checked; set => SaveChartImage_checkBox.Checked = value; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool SaveChartImageEnabled { set => SaveChartImage_checkBox.Enabled = value; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public SaveView()
         {
             InitializeComponent();
-
-            BasicInfo_button.Click += (sender, args) => Action(BasicInfo);
-            LoadingData_button.Click += (sender, args) => Action(LoadingData);
-            SavingData_button.Click += (sender, args) => Action(SavingData);
-            Export_button.Click += (sender, args) => Action(Export);
-            Math_button.Click += (sender, args) => Action(Math);
-            ForDevelopers_button.Click += (sender, args) => Action(ForDevelopers);
+            Save_button.Click += (sender, args) => Action(Save);
         }
 
-        /// <summary>
-        /// Editing load settings
-        /// </summary>
-        public event Action BasicInfo;
-
-        /// <summary>
-        /// Editing video settings
-        /// </summary>
-        public event Action LoadingData;
-
-        /// <summary>
-        /// Selecting Export type DLL
-        /// </summary>
-        public event Action SavingData;
-
-        /// <summary>
-        /// Selecting Interpolation type DLL
-        /// </summary>
-        public event Action Export;
-
-        /// <summary>
-        /// Discarding Export type DLL
-        /// </summary>
-        public event Action Math;
 
         /// <summary>
         /// Discarding Interpolation type DLL
         /// </summary>
-        public event Action ForDevelopers;
+        public event Action Save;
 
         /// <summary>
         /// Showing help screen
