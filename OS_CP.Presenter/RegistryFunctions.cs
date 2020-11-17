@@ -42,7 +42,7 @@ namespace OS_CP.Presenter
             SetValue(key, "ShowLoad", true.ToString());
             SetValue(key, "ShowVideo", true.ToString());
             SetValue(key, "ExportDLLPath", CurrentPath);
-            SetValue(key, "InterpolationDLLPath", CurrentPath);
+            SetValue(key, "MathDLLPath", CurrentPath);
         }
 
         /// <summary>
