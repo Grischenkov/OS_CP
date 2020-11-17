@@ -53,7 +53,7 @@ namespace OS_CP.Presenter
         private void Open()
         {
             _function.FillTable(CheckValues(DoubleToString(ReadTable())));
-            View.ValueTable = ProcessData(DoubleToString(_function.Table));
+            View.ValueTable = DoubleToString(ProcessData(_function.Table));
         }
 
         /// <summary>
@@ -80,6 +80,24 @@ namespace OS_CP.Presenter
             MethodInfo method   = type.GetMethod("Export");
 
             method.Invoke(cls, new object[] { ProcessData(_function.Table) });
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        private double[][] ProcessData(double[][] table)
+        {
+            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "InterpolationDLLPath") == Directory.GetCurrentDirectory())
+                return table;
+
+            Assembly assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "InterpolationDLLPath")));
+            Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "InterpolationDLLPath")) + ".MATH");
+            Object cls = Activator.CreateInstance(type);
+            MethodInfo method = type.GetMethod("Process");
+
+            return (double[][])method.Invoke(cls, new object[] { _function.Table });
         }
 
         /// <summary>
