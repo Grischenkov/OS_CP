@@ -8,17 +8,17 @@ namespace MSWordExport
     /// <summary>
     /// 
     /// </summary>
-    public static class EXPORT
+    public class EXPORT
     {
         /// <summary>
         /// 
         /// </summary>
-        public static string Name => "MS Excel";
+        public string Name => "MS Excel";
 
         /// <summary>
         /// 
         /// </summary>
-        public static void Export(double[][] values)
+        public void Export(double[][] values)
         {
             SaveFileDialog saveFile = new SaveFileDialog
             {

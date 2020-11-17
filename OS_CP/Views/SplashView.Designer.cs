@@ -108,7 +108,7 @@
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(220, 24);
             this.Version.TabIndex = 12;
-            this.Version.Text = "Version: 1.3    16/11/2020";
+            this.Version.Text = "Version: 1.4    16/11/2020";
             // 
             // SplashView
             // 
