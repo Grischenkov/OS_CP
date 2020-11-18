@@ -40,6 +40,7 @@ namespace MSExcelExport
                     Workbook workbook = excel.Workbooks.Add();
                     Worksheet worksheet = workbook.ActiveSheet;
 
+                    excel.Visible = false;
                     int size = 0;
                     for (int i = 0, j = 1; i < table.Length; i++, j++, size++)
                     {
@@ -73,7 +74,6 @@ namespace MSExcelExport
                     excel.AlertBeforeOverwriting = false;
                     workbook.SaveAs(filePath);
 
-                    excel.Visible = true;
                     try
                     {
                         workbook.Close();
