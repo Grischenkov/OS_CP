@@ -23,9 +23,9 @@ namespace OS_CP.Presenter
             View.LoadShowing += () => SaveKeyValue("ShowLoad", View.ShowLoad.ToString());
             View.VideoShowing += () => SaveKeyValue("ShowVideo", View.ShowVideo.ToString());
             View.SelectExport += SelectExport;
-            View.SelectInterpolation += SelectInterpolation;
+            View.SelectMath += SelectMath;
             View.DiscardExport += () => DiscardPath("ExportDLLPath");
-            View.DiscardInterpolation += () => DiscardPath("InterpolationDLLPath");
+            View.DiscardMath += () => DiscardPath("MathDLLPath");
         }
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace OS_CP.Presenter
                     case "ExportDLLPath":
                         View.ExportDLLPath = RegistryFunctions.GetValue(_registryKey, "ExportDLLPath") == RegistryFunctions.CurrentPath ? null : RegistryFunctions.GetValue(_registryKey, "ExportDLLPath");
                         break;
-                    case "InterpolationDLLPath":
-                        View.InterpolationDLLPath = RegistryFunctions.GetValue(_registryKey, "InterpolationDLLPath") == RegistryFunctions.CurrentPath ? null : RegistryFunctions.GetValue(_registryKey, "InterpolationDLLPath");
+                    case "MathDLLPath":
+                        View.MathDLLPath = RegistryFunctions.GetValue(_registryKey, "MathDLLPath") == RegistryFunctions.CurrentPath ? null : RegistryFunctions.GetValue(_registryKey, "MathDLLPath");
                         break;
                 }
             }
@@ -66,12 +66,12 @@ namespace OS_CP.Presenter
         }
 
         /// <summary>
-        /// Load interpolation type DLL
+        /// Load Math type DLL
         /// </summary>
-        private void SelectInterpolation()
+        private void SelectMath()
         {
-            View.InterpolationDLLPath = FileFunctions.Open("dll");
-            SaveKeyValue("InterpolationDLLPath", View.InterpolationDLLPath);
+            View.MathDLLPath = FileFunctions.Open("dll");
+            SaveKeyValue("MathDLLPath", View.MathDLLPath);
         }
 
         private void DiscardPath(string name)
@@ -81,8 +81,8 @@ namespace OS_CP.Presenter
                 case "ExportDLLPath":
                     View.ExportDLLPath = null;
                     break;
-                case "InterpolationDLLPath":
-                    View.InterpolationDLLPath = null;
+                case "MathDLLPath":
+                    View.MathDLLPath = null;
                     break;
             }
             SaveKeyValue(name, RegistryFunctions.CurrentPath);

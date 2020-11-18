@@ -23,9 +23,9 @@ namespace OS_CP.Presenter
         string ExportDLLPath { get; set; }
 
         /// <summary>
-        /// Getting/Setting Interpolation type DLL path
+        /// Getting/Setting Math type DLL path
         /// </summary>
-        string InterpolationDLLPath { get; set; }
+        string MathDLLPath { get; set; }
         
         /// <summary>
         /// Editing load settings
@@ -43,9 +43,9 @@ namespace OS_CP.Presenter
         event Action SelectExport;
 
         /// <summary>
-        /// Selecting Interpolation type DLL
+        /// Selecting Math type DLL
         /// </summary>
-        event Action SelectInterpolation;
+        event Action SelectMath;
 
         /// <summary>
         /// Discarding Export type DLL
@@ -53,9 +53,9 @@ namespace OS_CP.Presenter
         event Action DiscardExport;
 
         /// <summary>
-        /// Discarding Interpolation type DLL
+        /// Discarding Math type DLL
         /// </summary>
-        event Action DiscardInterpolation;
+        event Action DiscardMath;
 
         /// <summary>
         /// Showing message about error
