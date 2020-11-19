@@ -76,6 +76,10 @@ namespace OS_CP.Presenter
             _function.FillTable(CheckValues(View.ValueTable));
             Assembly   assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")));
             Type       type     = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")) + ".EXPORT");
+            if (type == null)
+            {
+                throw new Exception("Incorrect DLL. Use a library that meets the API requirements!");
+            }
             Object     cls      = Activator.CreateInstance(type);
             MethodInfo method   = type.GetMethod("Export");
 
@@ -94,6 +98,10 @@ namespace OS_CP.Presenter
 
             Assembly assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")));
             Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")) + ".MATH");
+            if (type == null)
+            {
+                throw new Exception("Incorrect DLL. Use a library that meets the API requirements!");
+            }
             Object cls = Activator.CreateInstance(type);
             MethodInfo method = type.GetMethod("Process");
 
