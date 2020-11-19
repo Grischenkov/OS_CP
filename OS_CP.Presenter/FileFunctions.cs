@@ -32,7 +32,7 @@ namespace OS_CP.Presenter
                     break;
                 case DialogResult.Cancel:
                     _filePath = null;
-                    break;
+                    throw new FileDialogCancelException();
                 default:
                     _filePath = null;
                     throw new Exception("Error opening file!");
@@ -67,13 +67,29 @@ namespace OS_CP.Presenter
                     break;
                 case DialogResult.Cancel:
                     _filePath = null;
-                    break;
+                    throw new FileDialogCancelException();
                 default:
                     _filePath = null;
                     throw new Exception("Error saving file!");
             }
 
             return _filePath;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed class FileDialogCancelException : Exception
+    {
+        public FileDialogCancelException()
+        {
+
+        }
+
+        public FileDialogCancelException(string name) : base(name)
+        {
+
         }
     }
 }

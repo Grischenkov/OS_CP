@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace OS_CP.Presenter
@@ -32,7 +34,7 @@ namespace OS_CP.Presenter
         private void LoadText(string name)
         {
             XmlDocument help = new XmlDocument();
-            help.Load("C:\\Users\\nikit\\source\\repos\\OS\\5th term\\OS_CP\\OS_CP.Presenter\\Help.xml");
+            help.Load(Directory.GetCurrentDirectory() + "\\Help.xml");
             XmlNode helpNode = help.GetElementsByTagName(name)[0];
             XmlNode node = helpNode.FirstChild;
             View.TextInfo = node.InnerText;

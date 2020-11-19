@@ -61,6 +61,10 @@ namespace OS_CP
             {
                 action?.Invoke();
             }
+            catch (FileDialogCancelException)
+            {
+                //ignored
+            }
             catch (Exception e)
             {
                 ShowError(e.Message);

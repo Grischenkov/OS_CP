@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Forms.Integration;
+using WMPLib;
 using OS_CP.Presenter;
+using OS_CP.Properties;
 
 namespace OS_CP
 {
@@ -24,6 +29,27 @@ namespace OS_CP
         /// Reading chart from form 
         /// </summary>
         public Bitmap ChartImage { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool ShowVideo
+        {
+            set
+            {
+                axWindowsMediaPlayer.Visible = value;
+                if (!value)
+                {
+                    Table.Height = 707;
+                    Table.Location = new Point(12, 30);
+                }
+                else
+                {
+                    Table.Height = 500;
+                    Table.Location = new Point(12, 237);
+                }
+            }
+        }
 
         /// <summary>
         /// Get value table
@@ -43,6 +69,8 @@ namespace OS_CP
             }
             set
             {
+                Table.RowCount = 1;
+                if (value == null) return;
                 for (int i = 0, j = 1; i < value.Length; i++, j++)
                 {
                     Table.RowCount = j + 1;
@@ -65,6 +93,7 @@ namespace OS_CP
             Settings_button.Click += (sender, args) => Action(Settings);
             Export_button.Click += (sender, args) => Action(Export);
             About_button.Click += (sender, args) => Action(About);
+            Clean_button.Click += (sender, args) => Action(Clean);
             Save_button.Click += (sender, args) => Action(Save);
             Open_button.Click += (sender, args) => Action(Open);
             Help_button.Click += (sender, args) => Action(Help);
@@ -88,6 +117,9 @@ namespace OS_CP
             Chart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
             Chart.ChartAreas[0].AxisX.Crossing = 0;
             Chart.ChartAreas[0].AxisY.Crossing = 0;
+            
+            axWindowsMediaPlayer.URL = Directory.GetCurrentDirectory() + "\\proc_video.mp4";
+            axWindowsMediaPlayer.Ctlcontrols.play();
         }
 
         /// <summary>
@@ -104,6 +136,11 @@ namespace OS_CP
         /// Saving data
         /// </summary>
         public event Action Save;
+
+        /// <summary>
+        /// Saving data
+        /// </summary>
+        public event Action Clean;
 
         /// <summary>
         /// Exporting data to Excel
@@ -149,6 +186,10 @@ namespace OS_CP
             {
                 action?.Invoke();
             }
+            catch (FileDialogCancelException)
+            {
+                //ignored
+            }
             catch (Exception e)
             {
                 ShowError(e.Message);
@@ -163,6 +204,9 @@ namespace OS_CP
         {
             Chart.Series[0].Points.Clear();
             Chart.Series[1].Points.Clear();
+            ChartImage = null;
+
+            if (table == null) return;
             foreach (var param in table)
             {
                 Chart.Series[0].Points.AddXY(param[0], param[1]);

@@ -36,6 +36,16 @@ namespace OS_CP.Presenter
             View.Help += Help;
             View.Settings += Settings;
             View.Exit += Exit;
+            View.Clean += Clean;
+
+            View.ShowVideo = RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ShowVideo") == "True";
+        }
+
+        private void Clean()
+        {
+            View.DrawChart(null);
+            View.ValueTable = null;
+            _function.FillTable(null);
         }
 
         /// <summary>
@@ -45,6 +55,7 @@ namespace OS_CP.Presenter
         {
             _function.FillTable(CheckValues(View.ValueTable));
             View.DrawChart(ProcessData(_function.Table));
+            View.ShowSuccess("Drawn successfully!");
         }
 
         /// <summary>
@@ -54,6 +65,7 @@ namespace OS_CP.Presenter
         {
             _function.FillTable(CheckValues(DoubleToString(ReadTable())));
             View.ValueTable = DoubleToString(ProcessData(_function.Table));
+            View.ShowSuccess("Read successfully!");
         }
 
         /// <summary>
@@ -76,10 +88,16 @@ namespace OS_CP.Presenter
             _function.FillTable(CheckValues(View.ValueTable));
             Assembly   assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")));
             Type       type     = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")) + ".EXPORT");
+            if (type == null)
+            {
+                throw new Exception("Incorrect DLL. Use a library that meets the API requirements!");
+            }
             Object     cls      = Activator.CreateInstance(type);
             MethodInfo method   = type.GetMethod("Export");
 
             method.Invoke(cls, new object[] { ProcessData(_function.Table) });
+
+            View.ShowSuccess("Export successfully!");
         }
 
         /// <summary>
@@ -94,6 +112,10 @@ namespace OS_CP.Presenter
 
             Assembly assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")));
             Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")) + ".MATH");
+            if (type == null)
+            {
+                throw new Exception("Incorrect DLL. Use a library that meets the API requirements!" + '\n' + "Load correct library or discard it for continue working.");
+            }
             Object cls = Activator.CreateInstance(type);
             MethodInfo method = type.GetMethod("Process");
 
@@ -149,10 +171,41 @@ namespace OS_CP.Presenter
             {
                 if (!string.IsNullOrEmpty(line))
                 {
-                    double[] arr = line.Split(' ').Select(double.Parse).ToArray();
+                    double[] arr = null;
+                    try
+                    {
+                         arr = line.Split(' ').Select(double.Parse).ToArray();
+                    }
+                    catch (FormatException e)
+                    {
+                        double[][] newArr = new double[i][];
+                        for (int j = 0; j < i; j++)
+                        {
+                            newArr[j] = new double[3];
+                            for (int z = 0; z < 3; z++)
+                            {
+                                newArr[j][z] = table[j][z];
+                            }
+                        }
+
+                        View.ShowWarning("The file has not been fully read!" + '\n' + "Check the file, correct the data, and re-read if necessary.");
+                        return newArr;
+                    }
+                    
                     if (arr.Length != 3)
                     {
-                        throw new ArgumentException("Incorrect data in file!");
+                        double[][] newArr = new double[i][];
+                        for (int j = 0; j < i; j++)
+                        {
+                            for (int z = 0; z < 3; z++)
+                            {
+                                newArr[j][z] = table[j][z];
+                            }
+                        }
+
+                        View.ShowWarning("The file has not been fully read!" + '\n' + "Check the file, correct the data, and re-read if necessary.");
+                        return newArr;
+                        //throw new ArgumentException("Incorrect data in file!");
                     }
                     else
                     {
