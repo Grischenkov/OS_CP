@@ -55,6 +55,7 @@ namespace OS_CP.Presenter
         {
             _function.FillTable(CheckValues(View.ValueTable));
             View.DrawChart(ProcessData(_function.Table));
+            View.ShowSuccess("Drawn successfully!");
         }
 
         /// <summary>
@@ -64,6 +65,7 @@ namespace OS_CP.Presenter
         {
             _function.FillTable(CheckValues(DoubleToString(ReadTable())));
             View.ValueTable = DoubleToString(ProcessData(_function.Table));
+            View.ShowSuccess("Read successfully!");
         }
 
         /// <summary>
@@ -94,6 +96,8 @@ namespace OS_CP.Presenter
             MethodInfo method   = type.GetMethod("Export");
 
             method.Invoke(cls, new object[] { ProcessData(_function.Table) });
+
+            View.ShowSuccess("Export successfully!");
         }
 
         /// <summary>
@@ -110,7 +114,7 @@ namespace OS_CP.Presenter
             Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "MathDLLPath")) + ".MATH");
             if (type == null)
             {
-                throw new Exception("Incorrect DLL. Use a library that meets the API requirements!");
+                throw new Exception("Incorrect DLL. Use a library that meets the API requirements!" + '\n' + "Load correct library or discard it for continue working.");
             }
             Object cls = Activator.CreateInstance(type);
             MethodInfo method = type.GetMethod("Process");

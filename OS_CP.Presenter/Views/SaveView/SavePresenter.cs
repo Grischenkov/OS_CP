@@ -64,6 +64,8 @@ namespace OS_CP.Presenter
             { 
                 _chart.Save(FileFunctions.Save("jpg"), System.Drawing.Imaging.ImageFormat.Jpeg);
             }
+
+            View.ShowSuccess("Successfully saved!");
         }
     }
 }
