@@ -194,6 +194,7 @@ PublishScripts/
 *.snupkg
 # The packages folder can be ignored because of Package Restore
 **/[Pp]ackages/*
+**/[Aa]ssets/*
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
 !**/[Pp]ackages/LightInject.3.0.1.2/
