@@ -69,6 +69,8 @@ namespace OS_CP
             }
             set
             {
+                Table.RowCount = 1;
+                if (value == null) return;
                 for (int i = 0, j = 1; i < value.Length; i++, j++)
                 {
                     Table.RowCount = j + 1;
@@ -91,6 +93,7 @@ namespace OS_CP
             Settings_button.Click += (sender, args) => Action(Settings);
             Export_button.Click += (sender, args) => Action(Export);
             About_button.Click += (sender, args) => Action(About);
+            Clean_button.Click += (sender, args) => Action(Clean);
             Save_button.Click += (sender, args) => Action(Save);
             Open_button.Click += (sender, args) => Action(Open);
             Help_button.Click += (sender, args) => Action(Help);
@@ -133,6 +136,11 @@ namespace OS_CP
         /// Saving data
         /// </summary>
         public event Action Save;
+
+        /// <summary>
+        /// Saving data
+        /// </summary>
+        public event Action Clean;
 
         /// <summary>
         /// Exporting data to Excel
@@ -196,6 +204,9 @@ namespace OS_CP
         {
             Chart.Series[0].Points.Clear();
             Chart.Series[1].Points.Clear();
+            ChartImage = null;
+
+            if (table == null) return;
             foreach (var param in table)
             {
                 Chart.Series[0].Points.AddXY(param[0], param[1]);
