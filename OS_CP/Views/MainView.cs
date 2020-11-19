@@ -118,7 +118,7 @@ namespace OS_CP
             Chart.ChartAreas[0].AxisX.Crossing = 0;
             Chart.ChartAreas[0].AxisY.Crossing = 0;
             
-            axWindowsMediaPlayer.URL = Directory.GetCurrentDirectory() + "\\asets\\proc_video.mp4";
+            axWindowsMediaPlayer.URL = Directory.GetCurrentDirectory() + "\\proc_video.mp4";
             axWindowsMediaPlayer.Ctlcontrols.play();
         }
 
