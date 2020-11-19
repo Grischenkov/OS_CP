@@ -36,6 +36,11 @@ namespace OS_CP.Presenter
         /// <summary>
         /// Saving data
         /// </summary>
+        event Action Clean;
+
+        /// <summary>
+        /// Saving data
+        /// </summary>
         event Action Save;
 
         /// <summary>

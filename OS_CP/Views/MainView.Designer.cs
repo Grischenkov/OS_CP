@@ -31,9 +31,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Table = new System.Windows.Forms.DataGridView();
@@ -54,6 +54,7 @@
             this.Help_button = new System.Windows.Forms.ToolStripMenuItem();
             this.About_button = new System.Windows.Forms.ToolStripMenuItem();
             this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.Clean_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.menuStrip.SuspendLayout();
@@ -62,16 +63,16 @@
             // 
             // Chart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.Chart.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.Chart.Legends.Add(legend1);
             this.Chart.Location = new System.Drawing.Point(518, 30);
             this.Chart.Name = "Chart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.Chart.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.Chart.Series.Add(series1);
             this.Chart.Size = new System.Drawing.Size(1009, 800);
             this.Chart.TabIndex = 0;
             this.Chart.Text = "Chart";
@@ -111,7 +112,7 @@
             this.Calculate_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Calculate_button.Location = new System.Drawing.Point(12, 743);
             this.Calculate_button.Name = "Calculate_button";
-            this.Calculate_button.Size = new System.Drawing.Size(500, 80);
+            this.Calculate_button.Size = new System.Drawing.Size(250, 80);
             this.Calculate_button.TabIndex = 2;
             this.Calculate_button.Text = "Calculate";
             this.Calculate_button.UseVisualStyleBackColor = true;
@@ -220,11 +221,22 @@
             this.axWindowsMediaPlayer.Size = new System.Drawing.Size(500, 203);
             this.axWindowsMediaPlayer.TabIndex = 6;
             // 
+            // Clean_button
+            // 
+            this.Clean_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Clean_button.Location = new System.Drawing.Point(262, 743);
+            this.Clean_button.Name = "Clean_button";
+            this.Clean_button.Size = new System.Drawing.Size(250, 80);
+            this.Clean_button.TabIndex = 7;
+            this.Clean_button.Text = "Clean";
+            this.Clean_button.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1540, 840);
+            this.Controls.Add(this.Clean_button);
             this.Controls.Add(this.axWindowsMediaPlayer);
             this.Controls.Add(this.Calculate_button);
             this.Controls.Add(this.Table);
@@ -267,6 +279,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Deviation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Сoncentration;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
+        private System.Windows.Forms.Button Clean_button;
     }
 }
 

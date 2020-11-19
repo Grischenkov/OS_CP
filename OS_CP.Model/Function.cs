@@ -43,12 +43,17 @@
         /// <param name="table"> value table </param>
         public void FillTable(double[][] table)
         {
-            this.Size = table.Length;
-            for (int i = 0; i < this.Size; i++)
+            Size = 0;
+            Table = null;
+            if (table != null)
             {
-                for (int j = 0; j < 3; j++)
+                Size = table.Length;
+                for (int i = 0; i < this.Size; i++)
                 {
-                    this.Table[i][j] = table[i][j];
+                    for (int j = 0; j < 3; j++)
+                    {
+                        Table[i][j] = table[i][j];
+                    }
                 }
             }
         }
