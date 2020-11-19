@@ -36,6 +36,8 @@ namespace OS_CP.Presenter
             View.Help += Help;
             View.Settings += Settings;
             View.Exit += Exit;
+
+            View.ShowVideo = RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ShowVideo") == "True";
         }
 
         /// <summary>
