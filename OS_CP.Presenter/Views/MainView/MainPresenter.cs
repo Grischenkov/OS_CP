@@ -36,8 +36,16 @@ namespace OS_CP.Presenter
             View.Help += Help;
             View.Settings += Settings;
             View.Exit += Exit;
+            View.Clean += Clean;
 
             View.ShowVideo = RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ShowVideo") == "True";
+        }
+
+        private void Clean()
+        {
+            View.DrawChart(null);
+            View.ValueTable = null;
+            _function.FillTable(null);
         }
 
         /// <summary>
