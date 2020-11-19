@@ -171,10 +171,41 @@ namespace OS_CP.Presenter
             {
                 if (!string.IsNullOrEmpty(line))
                 {
-                    double[] arr = line.Split(' ').Select(double.Parse).ToArray();
+                    double[] arr = null;
+                    try
+                    {
+                         arr = line.Split(' ').Select(double.Parse).ToArray();
+                    }
+                    catch (FormatException e)
+                    {
+                        double[][] newArr = new double[i][];
+                        for (int j = 0; j < i; j++)
+                        {
+                            newArr[j] = new double[3];
+                            for (int z = 0; z < 3; z++)
+                            {
+                                newArr[j][z] = table[j][z];
+                            }
+                        }
+
+                        View.ShowWarning("The file has not been fully read!" + '\n' + "Check the file, correct the data, and re-read if necessary.");
+                        return newArr;
+                    }
+                    
                     if (arr.Length != 3)
                     {
-                        throw new ArgumentException("Incorrect data in file!");
+                        double[][] newArr = new double[i][];
+                        for (int j = 0; j < i; j++)
+                        {
+                            for (int z = 0; z < 3; z++)
+                            {
+                                newArr[j][z] = table[j][z];
+                            }
+                        }
+
+                        View.ShowWarning("The file has not been fully read!" + '\n' + "Check the file, correct the data, and re-read if necessary.");
+                        return newArr;
+                        //throw new ArgumentException("Incorrect data in file!");
                     }
                     else
                     {
