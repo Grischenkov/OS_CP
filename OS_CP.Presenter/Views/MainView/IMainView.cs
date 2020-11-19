@@ -9,6 +9,11 @@ namespace OS_CP.Presenter
     public interface IMainView : IView
     {
         /// <summary>
+        /// 
+        /// </summary>
+        bool ShowVideo { set; }
+
+        /// <summary>
         /// Reading chart image from form
         /// </summary>
         Bitmap ChartImage { get; }

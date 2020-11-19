@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Forms.Integration;
+using WMPLib;
 using OS_CP.Presenter;
+using OS_CP.Properties;
 
 namespace OS_CP
 {
@@ -24,6 +29,27 @@ namespace OS_CP
         /// Reading chart from form 
         /// </summary>
         public Bitmap ChartImage { get; private set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool ShowVideo
+        {
+            set
+            {
+                axWindowsMediaPlayer.Visible = value;
+                if (!value)
+                {
+                    Table.Height = 707;
+                    Table.Location = new Point(12, 30);
+                }
+                else
+                {
+                    Table.Height = 500;
+                    Table.Location = new Point(12, 237);
+                }
+            }
+        }
 
         /// <summary>
         /// Get value table
@@ -88,6 +114,9 @@ namespace OS_CP
             Chart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
             Chart.ChartAreas[0].AxisX.Crossing = 0;
             Chart.ChartAreas[0].AxisY.Crossing = 0;
+            
+            axWindowsMediaPlayer.URL = Directory.GetCurrentDirectory() + "\\asets\\proc_video.mp4";
+            axWindowsMediaPlayer.Ctlcontrols.play();
         }
 
         /// <summary>

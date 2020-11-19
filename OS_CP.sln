@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{82B67274-3132-4AB3-BE68-383940EB2B8E}"
 	ProjectSection(SolutionItems) = preProject
 		bump-version.py = bump-version.py
+		asets\proc_video.mp4 = asets\proc_video.mp4
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSExcelExport", "MSExcelExport\MSExcelExport.csproj", "{0B4A9DC8-1F20-4BAF-9690-BABCF376CD15}"

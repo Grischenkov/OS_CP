@@ -21,7 +21,7 @@ namespace OS_CP.Presenter
             LoadValues();
 
             View.LoadShowing += () => SaveKeyValue("ShowLoad", View.ShowLoad.ToString());
-            View.VideoShowing += () => SaveKeyValue("ShowVideo", View.ShowVideo.ToString());
+            View.VideoShowing += () => ShowVideo("ShowVideo", View.ShowVideo.ToString());
             View.SelectExport += SelectExport;
             View.SelectMath += SelectMath;
             View.DiscardExport += () => DiscardPath("ExportDLLPath");
@@ -98,6 +98,15 @@ namespace OS_CP.Presenter
             _registryKey = RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath);
             RegistryFunctions.SetValue(_registryKey, name, value);
             _registryKey.Close();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ShowVideo(string name, string value)
+        {
+            SaveKeyValue(name, value);
+            View.ShowWarning("Restart the application for the changes to take effect.");
         }
     }
 }

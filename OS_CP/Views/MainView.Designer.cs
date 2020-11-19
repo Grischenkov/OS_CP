@@ -31,9 +31,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Table = new System.Windows.Forms.DataGridView();
             this.Expense = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,24 +53,26 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.Help_button = new System.Windows.Forms.ToolStripMenuItem();
             this.About_button = new System.Windows.Forms.ToolStripMenuItem();
+            this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
             // Chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Chart.Legends.Add(legend1);
-            this.Chart.Location = new System.Drawing.Point(789, 30);
+            chartArea3.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.Chart.Legends.Add(legend3);
+            this.Chart.Location = new System.Drawing.Point(518, 30);
             this.Chart.Name = "Chart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Chart.Series.Add(series1);
-            this.Chart.Size = new System.Drawing.Size(1103, 999);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.Chart.Series.Add(series3);
+            this.Chart.Size = new System.Drawing.Size(1009, 800);
             this.Chart.TabIndex = 0;
             this.Chart.Text = "Chart";
             // 
@@ -80,35 +83,35 @@
             this.Expense,
             this.Deviation,
             this.Сoncentration});
-            this.Table.Location = new System.Drawing.Point(12, 30);
+            this.Table.Location = new System.Drawing.Point(12, 237);
             this.Table.Name = "Table";
-            this.Table.Size = new System.Drawing.Size(771, 906);
+            this.Table.Size = new System.Drawing.Size(500, 500);
             this.Table.TabIndex = 1;
             // 
             // Expense
             // 
             this.Expense.HeaderText = "Expense";
             this.Expense.Name = "Expense";
-            this.Expense.Width = 230;
+            this.Expense.Width = 145;
             // 
             // Deviation
             // 
             this.Deviation.HeaderText = "Deviation";
             this.Deviation.Name = "Deviation";
-            this.Deviation.Width = 230;
+            this.Deviation.Width = 145;
             // 
             // Сoncentration
             // 
             this.Сoncentration.HeaderText = "Сoncentration";
             this.Сoncentration.Name = "Сoncentration";
-            this.Сoncentration.Width = 230;
+            this.Сoncentration.Width = 145;
             // 
             // Calculate_button
             // 
             this.Calculate_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Calculate_button.Location = new System.Drawing.Point(12, 942);
+            this.Calculate_button.Location = new System.Drawing.Point(12, 743);
             this.Calculate_button.Name = "Calculate_button";
-            this.Calculate_button.Size = new System.Drawing.Size(771, 87);
+            this.Calculate_button.Size = new System.Drawing.Size(500, 80);
             this.Calculate_button.TabIndex = 2;
             this.Calculate_button.Text = "Calculate";
             this.Calculate_button.UseVisualStyleBackColor = true;
@@ -121,7 +124,7 @@
             this.Help_toolStrip});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1904, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1540, 24);
             this.menuStrip.TabIndex = 5;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -141,33 +144,33 @@
             // 
             this.Open_button.Name = "Open_button";
             this.Open_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.Open_button.Size = new System.Drawing.Size(180, 22);
+            this.Open_button.Size = new System.Drawing.Size(148, 22);
             this.Open_button.Text = "Open";
             // 
             // Save_button
             // 
             this.Save_button.Name = "Save_button";
             this.Save_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.Save_button.Size = new System.Drawing.Size(180, 22);
+            this.Save_button.Size = new System.Drawing.Size(148, 22);
             this.Save_button.Text = "Save";
             // 
             // Export_button
             // 
             this.Export_button.Name = "Export_button";
             this.Export_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.Export_button.Size = new System.Drawing.Size(180, 22);
+            this.Export_button.Size = new System.Drawing.Size(148, 22);
             this.Export_button.Text = "Export";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(145, 6);
             // 
             // Exit_button
             // 
             this.Exit_button.Name = "Exit_button";
             this.Exit_button.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.Exit_button.Size = new System.Drawing.Size(180, 22);
+            this.Exit_button.Size = new System.Drawing.Size(148, 22);
             this.Exit_button.Text = "Exit";
             // 
             // Help_toolStrip
@@ -208,11 +211,21 @@
             this.About_button.Size = new System.Drawing.Size(188, 22);
             this.About_button.Text = "About";
             // 
+            // axWindowsMediaPlayer
+            // 
+            this.axWindowsMediaPlayer.Enabled = true;
+            this.axWindowsMediaPlayer.Location = new System.Drawing.Point(12, 28);
+            this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
+            this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
+            this.axWindowsMediaPlayer.Size = new System.Drawing.Size(500, 203);
+            this.axWindowsMediaPlayer.TabIndex = 6;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1540, 840);
+            this.Controls.Add(this.axWindowsMediaPlayer);
             this.Controls.Add(this.Calculate_button);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.Chart);
@@ -227,6 +240,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,6 +266,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Expense;
         private System.Windows.Forms.DataGridViewTextBoxColumn Deviation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Сoncentration;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
     }
 }
 
