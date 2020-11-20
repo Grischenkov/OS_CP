@@ -30,6 +30,7 @@ namespace OS_CP
                 .RegisterView<IAboutView, AboutView>()
                 .RegisterView<ISplashView, SplashView>()
                 .RegisterView<ISettingsView, SettingsView>()
+                .RegisterView<IProcessView, ProcessView>()
                 .RegisterInstance(new ApplicationContext());
             
             //Showing splash if user selected

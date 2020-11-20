@@ -64,6 +64,8 @@
     <Compile Include="ParentInterfaces\IPresenter.cs" />
     <Compile Include="ParentInterfaces\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ProcessView\IProcessView.cs" />
+    <Compile Include="Views\ProcessView\ProcessPresenter.cs" />
     <Compile Include="Views\SaveView\ISaveView.cs" />
     <Compile Include="Views\SaveView\SavePresenter.cs" />
     <Compile Include="Views\SettingsView\ISettingsView.cs" />
@@ -101,5 +103,6 @@
   <ItemGroup>
     <Content Include="Help.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

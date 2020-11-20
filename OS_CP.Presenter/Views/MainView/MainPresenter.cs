@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using OS_CP.Model;
 
@@ -94,10 +96,22 @@ namespace OS_CP.Presenter
             }
             Object     cls      = Activator.CreateInstance(type);
             MethodInfo method   = type.GetMethod("Export");
-
+            
+            Thread thread = new Thread(Run);
+            thread.Start();
             method.Invoke(cls, new object[] { ProcessData(_function.Table) });
+            Thread.Sleep(0);
+            thread.Abort();
 
             View.ShowSuccess("Export successfully!");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Run()
+        {
+            Controller.Run<ProcessPresenter>();
         }
 
         /// <summary>
@@ -117,7 +131,11 @@ namespace OS_CP.Presenter
                 throw new Exception("Incorrect DLL. Use a library that meets the API requirements!" + '\n' + "Load correct library or discard it for continue working.");
             }
             Object cls = Activator.CreateInstance(type);
+            Thread thread = new Thread(Run);
+            thread.Start();
             MethodInfo method = type.GetMethod("Process");
+            Thread.Sleep(0);
+            thread.Abort();
 
             return (double[][])method.Invoke(cls, new object[] { _function.Table });
         }
