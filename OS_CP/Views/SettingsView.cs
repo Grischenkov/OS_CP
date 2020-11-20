@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OS_CP.Presenter;
+using System;
 using System.Windows.Forms;
-using OS_CP.Presenter;
 
 namespace OS_CP
 {
@@ -33,7 +28,7 @@ namespace OS_CP
         /// Getting/Setting Math type DLL path
         /// </summary>
         public string MathDLLPath { get => MathDLL_textBox.Text; set => MathDLL_textBox.Text = value; }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -78,13 +73,13 @@ namespace OS_CP
         /// Discarding Math type DLL
         /// </summary>
         public event Action DiscardMath;
-        
+
         /// <summary>
         /// Showing help screen
         /// </summary>
         public new void Show()
         {
-            this.ShowDialog();
+            ShowDialog();
         }
 
         /// <summary>

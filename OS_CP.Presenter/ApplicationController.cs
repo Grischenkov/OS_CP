@@ -53,7 +53,7 @@
                 _container.Register<TPresenter>();
             }
 
-            var presenter = _container.Resolve<TPresenter>();
+            TPresenter presenter = _container.Resolve<TPresenter>();
             presenter.Run();
         }
 
@@ -70,7 +70,7 @@
             if (!_container.IsRegistered<TPresenter>())
                 _container.Register<TPresenter>();
 
-            var presenter = _container.Resolve<TPresenter>();
+            TPresenter presenter = _container.Resolve<TPresenter>();
             presenter.Run(argument1, argument2);
         }
     }

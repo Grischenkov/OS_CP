@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Word;
 using Application = Microsoft.Office.Interop.Word.Application;
 
 namespace MSWordExport
@@ -36,10 +36,10 @@ namespace MSWordExport
                     {
                         string filePath = saveFile.FileName;
 
-                        Application word  = new Application();
-                        Document    doc   = word.Documents.Add(Visible: false);
-                        Range       range = doc.Range();
-                        Table       table = doc.Tables.Add(range, values.Length, 3);
+                        Application word = new Application();
+                        Document doc = word.Documents.Add(Visible: false);
+                        Range range = doc.Range();
+                        Table table = doc.Tables.Add(range, values.Length, 3);
 
                         table.Borders.Enable = 1;
                         for (int i = 0, j = 1; i < values.Length; i++, j++)

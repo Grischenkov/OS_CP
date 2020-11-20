@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OS_CP.Presenter
@@ -19,12 +15,12 @@ namespace OS_CP.Presenter
             OpenFileDialog openFile = new OpenFileDialog();
 
             string _filePath;
-        
+
             openFile.Title = @"Read data from...";
             openFile.Filter = @"Files(*." + format + @")|*." + format;
 
             DialogResult check = openFile.ShowDialog();
-            
+
             switch (check)
             {
                 case DialogResult.OK:
@@ -49,7 +45,7 @@ namespace OS_CP.Presenter
         public static string Save(string format)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
-            
+
             string _filePath;
 
             saveFile.Title = @"Save data like...";
@@ -57,7 +53,7 @@ namespace OS_CP.Presenter
 
             saveFile.OverwritePrompt = true;
             saveFile.CheckPathExists = true;
-            
+
             DialogResult check = saveFile.ShowDialog();
 
             switch (check)

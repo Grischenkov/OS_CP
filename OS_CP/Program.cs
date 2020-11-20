@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OS_CP.Presenter;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using OS_CP.Presenter;
 
 namespace OS_CP
 {
     /// <summary>
     /// The main class of program
     /// </summary>
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application
@@ -31,7 +29,7 @@ namespace OS_CP
                 .RegisterView<ISettingsView, SettingsView>()
                 .RegisterView<IProcessView, ProcessView>()
                 .RegisterInstance(new ApplicationContext());
-            
+
             //Showing splash if user selected
             if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ShowLoad") == "True")
             {

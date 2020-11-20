@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.Win32;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Win32;
 
 namespace OS_CP.Presenter
 {
@@ -20,7 +15,7 @@ namespace OS_CP.Presenter
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static RegistryKey CheckRegistry (string path)
+        public static RegistryKey CheckRegistry(string path)
         {
             if (Registry.CurrentUser.OpenSubKey(path, true) == null)
             {

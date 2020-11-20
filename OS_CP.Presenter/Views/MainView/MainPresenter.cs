@@ -1,14 +1,11 @@
-﻿using System;
+﻿using OS_CP.Model;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using OS_CP.Model;
 
 namespace OS_CP.Presenter
 {
@@ -84,19 +81,19 @@ namespace OS_CP.Presenter
         /// </summary>
         private void Export()
         {
-            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath") == Directory.GetCurrentDirectory()) 
+            if (RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath") == Directory.GetCurrentDirectory())
                 throw new Exception("Export library not selected." + '\n' + "Specify the path to the required file in the Settings window!");
 
             _function.FillTable(CheckValues(View.ValueTable));
-            Assembly   assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")));
-            Type       type     = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")) + ".EXPORT");
+            Assembly assembly = Assembly.Load(AssemblyName.GetAssemblyName(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")));
+            Type type = assembly.GetType(Path.GetFileNameWithoutExtension(RegistryFunctions.GetValue(RegistryFunctions.CheckRegistry(Properties.Settings.Default.RegistryPath), "ExportDLLPath")) + ".EXPORT");
             if (type == null)
             {
                 throw new Exception("Incorrect DLL. Use a library that meets the API requirements!");
             }
-            Object     cls      = Activator.CreateInstance(type);
-            MethodInfo method   = type.GetMethod("Export");
-            
+            object cls = Activator.CreateInstance(type);
+            MethodInfo method = type.GetMethod("Export");
+
             Thread thread = new Thread(Run);
             thread.Start();
             method.Invoke(cls, new object[] { ProcessData(_function.Table) });
@@ -130,7 +127,7 @@ namespace OS_CP.Presenter
             {
                 throw new Exception("Incorrect DLL. Use a library that meets the API requirements!" + '\n' + "Load correct library or discard it for continue working.");
             }
-            Object cls = Activator.CreateInstance(type);
+            object cls = Activator.CreateInstance(type);
             Thread thread = new Thread(Run);
             thread.Start();
             MethodInfo method = type.GetMethod("Process");
@@ -185,16 +182,16 @@ namespace OS_CP.Presenter
                 table = new double[i][];
             }
             i = 0;
-            foreach (var line in lines)
+            foreach (string line in lines)
             {
                 if (!string.IsNullOrEmpty(line))
                 {
                     double[] arr = null;
                     try
                     {
-                         arr = line.Split(' ').Select(double.Parse).ToArray();
+                        arr = line.Split(' ').Select(double.Parse).ToArray();
                     }
-                    catch (FormatException e)
+                    catch (FormatException)
                     {
                         double[][] newArr = new double[i][];
                         for (int j = 0; j < i; j++)
@@ -209,7 +206,7 @@ namespace OS_CP.Presenter
                         View.ShowWarning("The file has not been fully read!" + '\n' + "Check the file, correct the data, and re-read if necessary.");
                         return newArr;
                     }
-                    
+
                     if (arr.Length != 3)
                     {
                         double[][] newArr = new double[i][];
@@ -253,7 +250,7 @@ namespace OS_CP.Presenter
             for (int i = 0; i < array.Length; i++)
             {
                 table[i] = new string[3];
-                for (int j =0; j < 3; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     table[i][j] = array[i][j].ToString();
                 }
@@ -267,7 +264,7 @@ namespace OS_CP.Presenter
         /// </summary>
         /// <param name="srcTable"></param>
         /// <returns></returns>
-        private double[][] CheckValues (string[][] srcTable)
+        private double[][] CheckValues(string[][] srcTable)
         {
             if (srcTable.Length < 2) throw new Exception("Input data must contain at least two lines!");
             double[][] table = new double[srcTable.Length][];
@@ -277,12 +274,12 @@ namespace OS_CP.Presenter
                 table[i] = new double[3];
                 for (int j = 0; j < 3; j++)
                 {
-                    if (String.IsNullOrEmpty(srcTable[i][j]))
+                    if (string.IsNullOrEmpty(srcTable[i][j]))
                     {
                         throw new Exception($"Fill in the {j + 1} th element of the {i + 1} th row of the table!");
                     }
 
-                    table[i][j] = Double.Parse(srcTable[i][j]);
+                    table[i][j] = double.Parse(srcTable[i][j]);
                 }
             }
 

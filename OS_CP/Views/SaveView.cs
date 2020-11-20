@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OS_CP.Presenter;
+using System;
 using System.Windows.Forms;
-using OS_CP.Presenter;
 
 namespace OS_CP
 {
@@ -46,7 +41,7 @@ namespace OS_CP
         /// </summary>
         public new void Show()
         {
-            this.ShowDialog();
+            ShowDialog();
         }
 
         /// <summary>

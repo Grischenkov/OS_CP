@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using OS_CP.Presenter;
+using System;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using WMPLib;
-using OS_CP.Presenter;
-using OS_CP.Properties;
 
 namespace OS_CP
 {
@@ -19,8 +12,8 @@ namespace OS_CP
     /// </summary>s
     public partial class MainView : Form, IMainView
     {
-        private Series _deviation     = new Series("Deviation");        //Series of chart with deviation values
-        private Series _concentration = new Series("Concentration");    //Series of chart with concentration values
+        private readonly Series _deviation = new Series("Deviation");        //Series of chart with deviation values
+        private readonly Series _concentration = new Series("Concentration");    //Series of chart with concentration values
 
         /// <summary>
         /// Reading chart from form 
@@ -51,7 +44,8 @@ namespace OS_CP
         /// <summary>
         /// Get value table
         /// </summary>
-        public string[][] ValueTable {
+        public string[][] ValueTable
+        {
             get
             {
                 string[][] table = new string[Table.RowCount - 1][];
@@ -114,7 +108,7 @@ namespace OS_CP
             Chart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
             Chart.ChartAreas[0].AxisX.Crossing = 0;
             Chart.ChartAreas[0].AxisY.Crossing = 0;
-            
+
             axWindowsMediaPlayer.URL = Directory.GetCurrentDirectory() + "\\proc_video.mp4";
             axWindowsMediaPlayer.Ctlcontrols.play();
         }
@@ -204,7 +198,7 @@ namespace OS_CP
             ChartImage = null;
 
             if (table == null) return;
-            foreach (var param in table)
+            foreach (double[] param in table)
             {
                 Chart.Series[0].Points.AddXY(param[0], param[1]);
                 Chart.Series[1].Points.AddXY(param[0], param[2]);

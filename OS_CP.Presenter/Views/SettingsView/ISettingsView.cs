@@ -10,7 +10,7 @@ namespace OS_CP.Presenter
         /// <summary>
         /// 
         /// </summary>
-        bool ShowVideo { get; set;  }
+        bool ShowVideo { get; set; }
 
         /// <summary>
         /// 
@@ -26,7 +26,7 @@ namespace OS_CP.Presenter
         /// Getting/Setting Math type DLL path
         /// </summary>
         string MathDLLPath { get; set; }
-        
+
         /// <summary>
         /// Editing load settings
         /// </summary>

@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Security.AccessControl;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 
 namespace OS_CP.Presenter
 {
