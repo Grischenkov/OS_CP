@@ -48,7 +48,7 @@
             if (table != null)
             {
                 Size = table.Length;
-                for (int i = 0; i < this.Size; i++)
+                for (int i = 0; i < Size; i++)
                 {
                     for (int j = 0; j < 3; j++)
                     {

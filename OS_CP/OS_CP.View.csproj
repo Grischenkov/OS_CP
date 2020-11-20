@@ -28,7 +28,7 @@
     <PublisherName>Nikita Grishchenkov</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.6.0.0</ApplicationVersion>
+    <ApplicationVersion>1.7.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -73,25 +73,21 @@
       <HintPath>..\packages\LightInject.3.0.1.2\lib\net45\LightInject.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
-    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\ProcessView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ProcessView.Designer.cs">
+      <DependentUpon>ProcessView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SaveView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +145,9 @@
     </Compile>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProcessView.resx">
+      <DependentUpon>ProcessView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SaveView.resx">
       <DependentUpon>SaveView.cs</DependentUpon>

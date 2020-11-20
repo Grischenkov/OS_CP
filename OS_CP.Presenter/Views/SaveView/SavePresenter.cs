@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
-using OS_CP.Model;
 
 namespace OS_CP.Presenter
 {
@@ -61,7 +59,7 @@ namespace OS_CP.Presenter
                 }
             }
             if (View.SaveChartImage)
-            { 
+            {
                 _chart.Save(FileFunctions.Save("jpg"), System.Drawing.Imaging.ImageFormat.Jpeg);
             }
 

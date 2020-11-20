@@ -31,9 +31,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Table = new System.Windows.Forms.DataGridView();
@@ -53,66 +53,74 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.Help_button = new System.Windows.Forms.ToolStripMenuItem();
             this.About_button = new System.Windows.Forms.ToolStripMenuItem();
-            this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.Clean_button = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.Chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Table)).BeginInit();
             this.menuStrip.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // Chart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.Chart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Chart.Legends.Add(legend1);
-            this.Chart.Location = new System.Drawing.Point(518, 30);
+            this.Chart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.None;
+            chartArea7.Name = "ChartArea1";
+            this.Chart.ChartAreas.Add(chartArea7);
+            this.Chart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend7.Name = "Legend1";
+            this.Chart.Legends.Add(legend7);
+            this.Chart.Location = new System.Drawing.Point(465, 3);
             this.Chart.Name = "Chart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Chart.Series.Add(series1);
-            this.Chart.Size = new System.Drawing.Size(1009, 800);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.Chart.Series.Add(series7);
+            this.Chart.Size = new System.Drawing.Size(1072, 810);
             this.Chart.TabIndex = 0;
             this.Chart.Text = "Chart";
             // 
             // Table
             // 
+            this.Table.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Expense,
             this.Deviation,
             this.Сoncentration});
-            this.Table.Location = new System.Drawing.Point(12, 237);
+            this.Table.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Table.Location = new System.Drawing.Point(3, 246);
             this.Table.Name = "Table";
-            this.Table.Size = new System.Drawing.Size(500, 500);
+            this.Table.Size = new System.Drawing.Size(450, 480);
             this.Table.TabIndex = 1;
             // 
             // Expense
             // 
             this.Expense.HeaderText = "Expense";
             this.Expense.Name = "Expense";
-            this.Expense.Width = 145;
             // 
             // Deviation
             // 
             this.Deviation.HeaderText = "Deviation";
             this.Deviation.Name = "Deviation";
-            this.Deviation.Width = 145;
             // 
             // Сoncentration
             // 
             this.Сoncentration.HeaderText = "Сoncentration";
             this.Сoncentration.Name = "Сoncentration";
-            this.Сoncentration.Width = 145;
             // 
             // Calculate_button
             // 
             this.Calculate_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Calculate_button.Location = new System.Drawing.Point(12, 743);
+            this.Calculate_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Calculate_button.Location = new System.Drawing.Point(3, 3);
             this.Calculate_button.Name = "Calculate_button";
-            this.Calculate_button.Size = new System.Drawing.Size(250, 80);
+            this.Calculate_button.Size = new System.Drawing.Size(444, 31);
             this.Calculate_button.TabIndex = 2;
             this.Calculate_button.Text = "Calculate";
             this.Calculate_button.UseVisualStyleBackColor = true;
@@ -212,39 +220,84 @@
             this.About_button.Size = new System.Drawing.Size(188, 22);
             this.About_button.Text = "About";
             // 
-            // axWindowsMediaPlayer
-            // 
-            this.axWindowsMediaPlayer.Enabled = true;
-            this.axWindowsMediaPlayer.Location = new System.Drawing.Point(12, 28);
-            this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
-            this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
-            this.axWindowsMediaPlayer.Size = new System.Drawing.Size(500, 203);
-            this.axWindowsMediaPlayer.TabIndex = 6;
-            // 
             // Clean_button
             // 
             this.Clean_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Clean_button.Location = new System.Drawing.Point(262, 743);
+            this.Clean_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Clean_button.Location = new System.Drawing.Point(3, 40);
             this.Clean_button.Name = "Clean_button";
-            this.Clean_button.Size = new System.Drawing.Size(250, 80);
+            this.Clean_button.Size = new System.Drawing.Size(444, 32);
             this.Clean_button.TabIndex = 7;
             this.Clean_button.Text = "Clean";
             this.Clean_button.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Chart, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1540, 816);
+            this.tableLayoutPanel1.TabIndex = 9;
+            // 
+            // axWindowsMediaPlayer
+            // 
+            this.axWindowsMediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axWindowsMediaPlayer.Enabled = true;
+            this.axWindowsMediaPlayer.Location = new System.Drawing.Point(3, 3);
+            this.axWindowsMediaPlayer.Name = "axWindowsMediaPlayer";
+            this.axWindowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer.OcxState")));
+            this.axWindowsMediaPlayer.Size = new System.Drawing.Size(450, 237);
+            this.axWindowsMediaPlayer.TabIndex = 6;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.Table, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.axWindowsMediaPlayer, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(456, 810);
+            this.tableLayoutPanel2.TabIndex = 10;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.Calculate_button, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.Clean_button, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 732);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(450, 75);
+            this.tableLayoutPanel3.TabIndex = 10;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1540, 840);
-            this.Controls.Add(this.Clean_button);
-            this.Controls.Add(this.axWindowsMediaPlayer);
-            this.Controls.Add(this.Calculate_button);
-            this.Controls.Add(this.Table);
-            this.Controls.Add(this.Chart);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip;
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(950, 650);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
@@ -252,7 +305,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Table)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,8 +334,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Expense;
         private System.Windows.Forms.DataGridViewTextBoxColumn Deviation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Сoncentration;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
         private System.Windows.Forms.Button Clean_button;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }
 
