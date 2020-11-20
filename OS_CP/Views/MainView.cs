@@ -40,13 +40,13 @@ namespace OS_CP
                 axWindowsMediaPlayer.Visible = value;
                 if (!value)
                 {
-                    Table.Height = 707;
-                    Table.Location = new Point(12, 30);
+                    tableLayoutPanel2.RowStyles[0].Height = 0;
+                    tableLayoutPanel2.RowStyles[1].Height = 90;
                 }
                 else
                 {
-                    Table.Height = 500;
-                    Table.Location = new Point(12, 237);
+                    tableLayoutPanel2.RowStyles[0].Height = 30;
+                    tableLayoutPanel2.RowStyles[1].Height = 60;
                 }
             }
         }
